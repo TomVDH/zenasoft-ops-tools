@@ -1,0 +1,149 @@
+/* Othership — resolved token values
+   Generated from theme-overrides.css + fields.json
+
+   PREFIX ON THE PORTAL: --os-*
+   Write this prefix verbatim. The Page Factory has no stamp step, so
+   --zt-* would resolve to nothing and the declaration would be dropped.
+
+   BUTTONS THIS BRAND'S THEME DEFINES:
+     base       class="button"
+     colourway  button--cw-1, button--cw-2, button--cw-3, button--cw-4, button--cw-5
+     modes      button--mode-outline
+   Generated from this theme. Use what is listed; the theme provides the
+   CSS, so the body defines no button styles of its own.
+
+   EMAIL PALETTE — literal hex for emails. Email clients ignore var().
+     card-bg        #121212   the card your content sits on
+     button-bg      #b7ff88   CTA button fill, letterhead rule
+     button-text    #000000   CTA button label
+     footer-bg      #000000   footer band
+     footer-text    #999999   footer copy and links
+     page-ground    #f5f5f5   area behind the card
+     ink            #ffffff   body copy and headings
+     heading-font   'Red Hat Display', Arial, Helvetica, sans-serif
+     body-font      'Red Hat Display', Arial, Helvetica, sans-serif
+   The brand's Email Shell reads these same theme fields, so an email
+   built from this block matches the letterhead and footer it lands in.
+   card-bg is the card your content sits on. On a dark brand it is dark,
+   so read ink against it and never assume white.
+
+   TOKENS THIS BRAND DEFINES: every custom property below. A var() on a
+   name that is not below does not resolve. */
+
+:root {
+  /* === COLOURS === */
+  --os-color-dark:           #000000;
+  --os-color-light:          #ffffff;
+  --os-color-green:          #b7ff88;
+  --os-color-blue:           #9bc6ff;
+  --os-color-pink:           #ffc2ff;
+  /* === COLOURWAYS (marketer button extension) — 5 numbered slots.
+     stamp.colourway_count() counts these --os-cw-<n> lines (the --os-on-cw-<n>
+     ink pair is excluded by its regex). _base's _button loops 1..count and paints
+     them. Values reuse the colours above; ink is dark on light fills, light on black. */
+  --os-cw-1: var(--os-color-green);
+  --os-on-cw-1: var(--os-color-dark);
+  --os-cw-2: var(--os-color-light);
+  --os-on-cw-2: var(--os-color-dark);
+  --os-cw-3: var(--os-color-dark);
+  --os-on-cw-3: var(--os-color-light);
+  --os-cw-4: var(--os-color-blue);
+  --os-on-cw-4: var(--os-color-dark);
+  --os-cw-5: var(--os-color-pink);
+  --os-on-cw-5: var(--os-color-dark);
+  --os-bg-muted:             #f5f5f5;
+  --os-text-muted:           #666666;
+  --os-border-light:         #e0e0e0;
+  --os-border-dark:          #333333;
+  /* === TYPOGRAPHY === */
+  --os-font-headline:        'all-round-gothic', 'Red Hat Display', sans-serif;
+  --os-font-body:            'Red Hat Display', sans-serif;
+  --os-h1-size:              48px;
+  --os-h2-size:              36px;
+  --os-h3-size:              24px;
+  --os-h4-size:              20px;
+  --os-body-size:            16px;
+  --os-body-lh:              1.65;
+  /* === BUTTONS === */
+  --os-btn-primary-bg:       #b7ff88;
+  --os-btn-primary-text:     #000000;
+  --os-btn-primary-hover-bg: #a3ec74;
+  --os-btn-secondary-bg:     #000000;
+  --os-btn-secondary-text:   #000000;
+  --os-btn-secondary-border: #000000;
+  --os-btn-radius:           9999px;
+  --os-btn-pad-v:            14px;
+  --os-btn-pad-h:            36px;
+  --os-btn-font-size:        16px;
+  --os-btn-font-weight:      600;
+  /* === SPACING === */
+  --os-max-width:            1200px;
+  --os-section-pad-v:        96px;
+  --os-section-pad-h:        30px;
+  --os-flow-gap:             30px; /* stacked-row rhythm; established default (Ops, 2026-08-18) */
+  --os-card-radius:          16px;
+  /* === SHADOWS === */
+  --os-shadow-sm:            0 1px 3px rgba(0, 0, 0, 0.08);
+  --os-shadow-md:            0 4px 12px rgba(0, 0, 0, 0.10);
+  --os-shadow-lg:            0 8px 30px rgba(0, 0, 0, 0.12);
+  /* === HEADER === */
+  --os-nav-bg:               #000000;
+  --os-nav-text:             #ffffff;
+  /* === FOOTER === */
+  /* Rich Black footer with the legacy OS pattern over it (Ops, 2026-08-24). bg is
+     the shared rich-black value; the pattern is the same hosted asset the OS emails
+     use (lives on hubfs, not in the repo). Text stays light via --os-footer-text. */
+  --os-footer-bg:            var(--os-bg-rich-black);
+  /* Pattern kept VERY subtle (Ops, 2026-08-24): a 90%-opaque rich-black veil
+     (rgba matches #121212) sits OVER the image, so the pattern reads through at
+     only ~10% — barely there. There is no opacity for a background image, so the
+     veil is the mechanism; raise its alpha (→0.93/0.95) to make it subtler still. */
+  --os-footer-bg-image:      linear-gradient(rgba(18, 18, 18, 0.9), rgba(18, 18, 18, 0.9)), url('https://50629780.fs1.hubspotusercontent-na1.net/hubfs/50629780/saas/othership/graphics/Othership_Background.png');
+  --os-footer-text:          #999999;
+  --os-footer-link:          #999999;
+  /* ============================================================
+     Role tokens (--os-*) — SPEC-018 v0.5 output namespace
+     The role vocabulary every canonical component references. Authored in
+     _base as --zt-*; the stamp rewrites that to this brand's prefix, so the
+     role NAMES are identical across brands and only the values differ. De-inverted:
+     `bg` = page ground, `ink` = primary text (retires the misleading old
+     colour-dark/-light names). Brand ACCENTS are the one genuinely per-brand
+     section (below) — each skin declares how many it has (OS = 1, DF = 2).
+     Everything above the accents is byte-identical across brands.
+     ============================================================ */
+  /* surfaces + ink */
+  --os-bg:              #000000;
+  --os-ink:             #ffffff;
+  /* selectable background: OS Rich Black (Ops-provided value, 2026-08-24). Feeds
+     the curated `.zt-bg--rich-black` background option; text falls back to --os-ink
+     (light on this dark fill). Literal for now; promote to a theme setting if the
+     palette grows. */
+  --os-bg-rich-black:   #121212;
+  --os-ink-muted:       #666666;
+  --os-border:          #e0e0e0;
+  --os-form-error:      #EF6B51;   /* semantic: validation + required markers, not a brand accent */
+  --os-border-strong:   #333333;
+  /* surface inks — the text colour each non-page surface carries. Othership
+     INVERTS (dark page, LIGHT muted panels + white cards), so `on-muted`/
+     `on-card` are the dark primary and cards use the light secondary. Non-
+     inverting brands just repeat --os-ink / --os-bg here. */
+  --os-on-muted:        #000000;
+  --os-card-bg:         #ffffff;
+  --os-on-card:         #000000;
+  /* brand accents — Othership declares ONE (green); blue + pink are off-lineup */
+  --os-accent-1:        #b7ff88;
+  --os-glow:          #b7ff88;
+  --os-on-accent:       #000000;
+  /* type */
+  --os-font-head:       'all-round-gothic', 'Red Hat Display', sans-serif;
+  /* buttons */
+  --os-btn-primary-hover:   #a3ec74;
+  /* space + shape */
+  /* elevation */
+  /* chrome */
+  /* frosted header: dim the backdrop a touch so bright content scrolling under the
+     glass reads darker (Ops, 2026-08-24). Multiplies the blurred backdrop's
+     brightness; <1 darkens, 1 = clear. Mechanism is Layer 1 (_base _header.css);
+     this is the OS value. */
+  --os-frost-dim:       0.85;
+}

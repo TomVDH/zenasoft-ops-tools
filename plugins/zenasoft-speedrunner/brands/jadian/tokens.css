@@ -1,0 +1,138 @@
+/* Jadian — resolved token values
+   Generated from theme-overrides.css + fields.json
+
+   PREFIX ON THE PORTAL: --jd-*
+   Write this prefix verbatim. The Page Factory has no stamp step, so
+   --zt-* would resolve to nothing and the declaration would be dropped.
+
+   BUTTONS THIS BRAND'S THEME DEFINES:
+     base       class="button"
+     colourway  button--cw-1
+     modes      none defined
+   Generated from this theme. Use what is listed; the theme provides the
+   CSS, so the body defines no button styles of its own.
+
+   EMAIL PALETTE — literal hex for emails. Email clients ignore var().
+     card-bg        #ffffff   the card your content sits on
+     button-bg      #006599   CTA button fill, letterhead rule
+     button-text    #ffffff   CTA button label
+     footer-bg      #072B52   footer band
+     footer-text    #ffffff   footer copy and links
+     page-ground    #F2F8FC   area behind the card
+     ink            #231F20   body copy and headings
+     heading-font   'Outfit', Arial, Helvetica, sans-serif
+     body-font      'Outfit', Arial, Helvetica, sans-serif
+   The brand's Email Shell reads these same theme fields, so an email
+   built from this block matches the letterhead and footer it lands in.
+   card-bg is the card your content sits on. On a dark brand it is dark,
+   so read ink against it and never assume white.
+
+   TOKENS THIS BRAND DEFINES: every custom property below. A var() on a
+   name that is not below does not resolve. */
+
+:root {
+  /* === COLOURS === */
+  --jd-color-bg:             #ffffff;
+  --jd-color-ink:             #231F20;
+  --jd-color-brand:          #006599;
+  --jd-color-accent:         #2696D1;
+  --jd-color-ground-dark:    #072B52;
+  /* BUTTON COLOURWAYS (THEME-LAYERS L2 values for the L1 capability).
+     stamp.colourway_count() counts these --jd-cw-<n> lines. Jadian's guide
+     names ONE real accent (Light Blue) plus the brand blue used for buttons —
+     one colourway, matching the actual palette rather than inventing more. */
+  --jd-cw-1: var(--jd-color-brand);
+  --jd-on-cw-1: #ffffff;
+  --jd-bg-muted:             #F2F8FC;
+  --jd-text-muted:           #666666;
+  --jd-border-light:         #e0e0e0;
+  --jd-border-dark:          #333333;
+  /* === TYPOGRAPHY === */
+  --jd-font-headline:        'Outfit', sans-serif;
+  --jd-font-body:            'Outfit', sans-serif;
+  --jd-h1-size:              48px;
+  --jd-h2-size:              36px;
+  --jd-h3-size:              24px;
+  --jd-h4-size:              20px;
+  --jd-body-size:            16px;
+  --jd-body-lh:              1.65;
+  /* === BUTTONS === */
+  --jd-btn-primary-bg:       #006599;
+  --jd-btn-primary-text:     #ffffff;
+  --jd-btn-primary-hover-bg: #2b83ab;
+  --jd-btn-secondary-bg:     #000000;
+  --jd-btn-secondary-text:   #006599;
+  --jd-btn-secondary-border: #006599;
+  --jd-btn-radius:           5px;
+  --jd-btn-pad-v:            14px;
+  --jd-btn-pad-h:            36px;
+  --jd-btn-font-size:        16px;
+  --jd-btn-font-weight:      600;
+  /* === SPACING === */
+  --jd-max-width:            1200px;
+  --jd-section-pad-v:        96px;
+  --jd-section-pad-h:        30px;
+  --jd-flow-gap:             30px; /* stacked-row rhythm; established default (Ops, 2026-08-18) */
+  --jd-card-radius:          16px;
+  /* === SHADOWS === */
+  --jd-shadow-sm:            0 1px 3px rgba(0, 0, 0, 0.08);
+  --jd-shadow-md:            0 4px 12px rgba(0, 0, 0, 0.10);
+  --jd-shadow-lg:            0 8px 30px rgba(0, 0, 0, 0.12);
+  /* === HEADER === */
+  --jd-nav-bg:               #072B52;
+  --jd-nav-text:             #ffffff;
+  /* === FOOTER === */
+  --jd-footer-bg:            #072B52;
+  --jd-footer-text:          #ffffff;
+  --jd-footer-link:          #ffffff;
+  /* ============================================================
+     Role tokens (--jd-*) — SPEC-018 v0.5 output namespace
+     The role vocabulary every canonical component references. Authored in
+     _base as --zt-*; the stamp rewrites that to this brand's prefix, so the
+     role NAMES are identical across brands and only the values differ.
+     ============================================================ */
+  /* surfaces + ink */
+  --jd-bg:              #ffffff;
+  --jd-ink:             #231F20;
+  --jd-ink-muted:       #666666;
+  --jd-border:          #e0e0e0;
+  --jd-form-error:      #EF6B51;   /* semantic: validation + required markers, not a brand accent */
+  --jd-border-strong:   #333333;
+  /* surface inks — the text colour each non-page surface carries. Jadian does
+     NOT invert (light page + light muted panels + white cards), so
+     `on-muted`/`on-card` repeat the ink and cards use the page ground. */
+  --jd-on-muted:        #231F20;
+  --jd-card-bg:         #ffffff;
+  --jd-on-card:         #231F20;
+  --jd-surface:         #ffffff;
+  /* Panel — computed, OPAQUE (brand sheet §4: "Never rgba(255,255,255,a) — a
+     translucent white panel disappears on the tint grounds"). --jd-panel-border
+     is a derived value (Light Blue mixed 20% toward Deep Blue), not a printed
+     colour — it clears 3:1 on every light ground including the OG-image tint,
+     where raw Light Blue does not (2.70:1). DaaS/DeskFlex G20 lesson applied
+     from day one instead of discovered after the fact. */
+  --jd-panel-bg:        #FFFFFF;
+  --jd-panel-border:    #2081B8;
+  /* brand accent — Jadian declares ONE (Light Blue), fill/decorative only */
+  --jd-accent-1:        #2696D1;
+  --jd-glow:            #2696D1;
+  --jd-on-accent:       #231F20;  /* Light Blue fill needs ink text, not white — 3.30:1 fails AA (brand sheet §4) */
+  /* Text-safe accent (brand sheet §4). Light Blue fails AA as text everywhere
+     (3.30:1 on white down to 2.70:1 on the OG-image tint) — accent-role TEXT
+     (links, eyebrows, stat figures) uses Software Blue instead, verified by
+     computation at 5.18:1 worst case. */
+  --jd-accent-ink:      #006599;
+  --jd-on-accent-ink:   #ffffff;
+  /* Dark grounds — Deep Blue (nav/footer bands) is a separate colour from the
+     ink (Charcoal): the guide files them under different roles (brand sheet
+     §3), unlike DeskFlex/TillerStack where one colour serves both. */
+  --jd-ground-dark:     #072B52;
+  --jd-ink-on-dark:     #ffffff;  /* pure white — every kit SVG on a dark ground is fill:#fff; no off-white exists in the kit */
+  /* type */
+  --jd-font-head:       'Outfit', sans-serif;
+  /* buttons */
+  --jd-btn-primary-hover:   #2b83ab;
+  /* space + shape */
+  /* elevation */
+  /* chrome */
+}

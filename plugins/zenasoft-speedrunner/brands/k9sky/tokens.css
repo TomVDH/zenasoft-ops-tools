@@ -1,0 +1,137 @@
+/* K9Sky — resolved token values
+   Generated from theme-overrides.css + fields.json
+
+   PREFIX ON THE PORTAL: --k9-*
+   Write this prefix verbatim. The Page Factory has no stamp step, so
+   --zt-* would resolve to nothing and the declaration would be dropped.
+
+   BUTTONS THIS BRAND'S THEME DEFINES:
+     base       class="button"
+     colourway  button--cw-1, button--cw-2, button--cw-3
+     modes      button--mode-soft
+   Generated from this theme. Use what is listed; the theme provides the
+   CSS, so the body defines no button styles of its own.
+
+   EMAIL PALETTE — literal hex for emails. Email clients ignore var().
+     card-bg        #ffffff   the card your content sits on
+     button-bg      #013667   CTA button fill, letterhead rule
+     button-text    #ffffff   CTA button label
+     footer-bg      #013667   footer band
+     footer-text    #ffffff   footer copy and links
+     page-ground    #eef5fa   area behind the card
+     ink            #272727   body copy and headings
+     heading-font   'Roboto', Arial, Helvetica, sans-serif
+     body-font      'Roboto', Arial, Helvetica, sans-serif
+   The brand's Email Shell reads these same theme fields, so an email
+   built from this block matches the letterhead and footer it lands in.
+   card-bg is the card your content sits on. On a dark brand it is dark,
+   so read ink against it and never assume white.
+
+   TOKENS THIS BRAND DEFINES: every custom property below. A var() on a
+   name that is not below does not resolve. */
+
+:root {
+  /* === COLOURS === */
+  --k9-color-bg:             #faf9f9;
+  --k9-color-ink:            #272727;
+  --k9-color-brand:          #013667;
+  --k9-color-accent:         #6bcceb;
+  /* BUTTON COLOURWAYS (THEME-LAYERS L2 values for the L1 capability).
+     stamp.colourway_count() counts these --k9-cw-<n> lines. TillerStack takes 3,
+     and ships a DIFFERENT mode from Othership's outline — `soft`, a tinted fill.
+     That divergence is the point: a mode is per-brand, not a shared vocabulary. */
+  --k9-cw-1: var(--k9-color-brand);
+  --k9-on-cw-1: var(--k9-color-bg);
+  --k9-cw-2: var(--k9-color-accent);
+  --k9-on-cw-2: var(--k9-color-ink);
+  --k9-cw-3: var(--k9-color-ink);
+  --k9-on-cw-3: var(--k9-color-bg);
+  --k9-bg-muted:             #eef5fa;
+  --k9-text-muted:           #666666;
+  --k9-border-light:         #e0e0e0;
+  --k9-border-dark:          #333333;
+  /* === GRADIENT ===
+     A per-brand token type DeskFlex doesn't have at all -- TillerStack's brand
+     guide (page 8) specifies one explicitly. First-class, not a color hack. */
+  --k9-gradient-hero:        linear-gradient(-23deg, #6bcceb 0%, #013667 100%);
+  /* === TYPOGRAPHY === */
+  --k9-font-headline:        'Roboto', sans-serif;
+  --k9-font-body:            'Roboto', sans-serif;
+  --k9-h1-size:              48px;
+  --k9-h2-size:              36px;
+  --k9-h3-size:              24px;
+  --k9-h4-size:              20px;
+  --k9-body-size:            16px;
+  --k9-body-lh:              1.65;
+  /* === BUTTONS === */
+  --k9-btn-primary-bg:       #013667;
+  --k9-btn-primary-text:     #ffffff;
+  --k9-btn-primary-hover-bg: #2688d2;
+  --k9-btn-secondary-bg:     #000000;
+  --k9-btn-secondary-text:   #013667;
+  --k9-btn-secondary-border: #013667;
+  --k9-btn-radius:           5px;
+  --k9-btn-pad-v:            14px;
+  --k9-btn-pad-h:            36px;
+  --k9-btn-font-size:        16px;
+  --k9-btn-font-weight:      600;
+  /* === SPACING === */
+  --k9-max-width:            1200px;
+  --k9-section-pad-v:        96px;
+  --k9-section-pad-h:        30px;
+  --k9-flow-gap:             30px; /* stacked-row rhythm; established default (Ops, 2026-08-18) */
+  --k9-card-radius:          16px;
+  /* === SHADOWS === */
+  --k9-shadow-sm:            0 1px 3px rgba(0, 0, 0, 0.08);
+  --k9-shadow-md:            0 4px 12px rgba(0, 0, 0, 0.10);
+  --k9-shadow-lg:            0 8px 30px rgba(0, 0, 0, 0.12);
+  /* === HEADER === */
+  --k9-nav-bg:               #013667;
+  --k9-nav-text:             #ffffff;
+  /* === FOOTER === */
+  --k9-footer-bg:            #013667;
+  --k9-footer-text:          #ffffff;
+  --k9-footer-link:          #ffffff;
+  /* ============================================================
+     Role tokens (--k9-*) — SPEC-018 v0.5 output namespace
+     The role vocabulary every canonical component references. Authored in
+     _base as --zt-*; the stamp rewrites that to this brand's prefix, so the
+     role NAMES are identical across brands and only the values differ. De-inverted:
+     `bg` = page ground, `ink` = primary text. Brand ACCENTS are the one
+     genuinely per-brand section (below) — each skin declares how many it
+     has (OS = 1, DF = 2, TS = 1 + a hero gradient).
+     ============================================================ */
+  /* surfaces + ink */
+  --k9-bg:              #faf9f9;
+  --k9-ink:             #272727;
+  --k9-ink-muted:       #666666;
+  --k9-border:          #e0e0e0;
+  --k9-form-error:      #EF6B51;   /* semantic: validation + required markers, not a brand accent */
+  --k9-border-strong:   #333333;
+  /* surface inks — the text colour each non-page surface carries. TillerStack
+     does NOT invert (light page + light muted panels + white cards), so
+     `on-muted`/`on-card` repeat the ink and cards use the page ground. */
+  --k9-on-muted:        #272727;
+  --k9-card-bg:         #faf9f9;
+  --k9-on-card:         #272727;
+  /* white panel surface — the brochure's language is white panels on the gray
+     page ground (--k9-bg / --k9-bg-muted are near-white grays that melt into
+     each other). Brands that invert (e.g. OS dark page) define this darker. */
+  --k9-surface:         #ffffff;
+  /* brand accents — TillerStack declares ONE (Sky Blue) plus a hero gradient */
+  --k9-accent-1:        #6bcceb;
+  --k9-glow:          #6bcceb;
+  --k9-on-accent:       #272727;
+  /* accent-ink — text-safe accent. --k9-accent-1 (Sky Blue) is a FILL colour;
+     as TEXT on --k9-bg it fails WCAG (~1.9:1). accent-ink is the deep brand
+     blue (same value as the primary button, ~5.6:1) for accent text: headings,
+     keyword spans, list markers. */
+  --k9-accent-ink:      #013667;
+  /* type */
+  --k9-font-head:       'Roboto', sans-serif;
+  /* buttons */
+  --k9-btn-primary-hover:   #2688d2;
+  /* space + shape */
+  /* elevation */
+  /* chrome */
+}

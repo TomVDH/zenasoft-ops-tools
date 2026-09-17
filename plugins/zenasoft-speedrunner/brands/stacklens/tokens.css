@@ -1,0 +1,146 @@
+/* StackLens — a sub-brand of TillerStack
+
+   It inherits TillerStack's colours and fonts VERBATIM. Only the logo differs.
+   So every token below, and the prefix, is TillerStack's: that is what the
+   portal serves for this brand. Do not invent a StackLens-specific colour.
+
+   THIS BRAND'S LOGO: wordmark 'StackLens', icon: corner double-arrow icon
+   The admin supplies the file. Use ##PORTAL_LOGO## as the src.
+
+   Everything below is copied from brands/tillerstack/tokens.css. Regenerate
+   both together; never hand-edit this file. */
+
+/*
+   Generated from theme-overrides.css + fields.json
+   PREFIX ON THE PORTAL: --ts-*
+   Write this prefix verbatim. The Page Factory has no stamp step, so
+   --zt-* would resolve to nothing and the declaration would be dropped.
+   BUTTONS THIS BRAND'S THEME DEFINES:
+     base       class="button"
+     colourway  button--cw-1, button--cw-2, button--cw-3
+     modes      button--mode-soft
+   Generated from this theme. Use what is listed; the theme provides the
+   CSS, so the body defines no button styles of its own.
+   EMAIL PALETTE — literal hex for emails. Email clients ignore var().
+     card-bg        #ffffff   the card your content sits on
+     button-bg      #006599   CTA button fill, letterhead rule
+     button-text    #ffffff   CTA button label
+     footer-bg      #303131   footer band
+     footer-text    #ffffff   footer copy and links
+     page-ground    #f5f5f5   area behind the card
+     ink            #303131   body copy and headings
+     heading-font   'Rethink Sans', Arial, Helvetica, sans-serif
+     body-font      'Public Sans', Arial, Helvetica, sans-serif
+   The brand's Email Shell reads these same theme fields, so an email
+   built from this block matches the letterhead and footer it lands in.
+   card-bg is the card your content sits on. On a dark brand it is dark,
+   so read ink against it and never assume white.
+   TOKENS THIS BRAND DEFINES: every custom property below. A var() on a
+   name that is not below does not resolve. 
+*/
+
+:root {
+  /* === COLOURS === */
+  --ts-color-bg:             #f3f3f3;
+  --ts-color-ink:            #303131;
+  --ts-color-brand:          #006599;
+  --ts-color-accent:         #31bcff;
+  /* BUTTON COLOURWAYS (THEME-LAYERS L2 values for the L1 capability).
+     stamp.colourway_count() counts these --ts-cw-<n> lines. TillerStack takes 3,
+     and ships a DIFFERENT mode from Othership's outline — `soft`, a tinted fill.
+     That divergence is the point: a mode is per-brand, not a shared vocabulary. */
+  --ts-cw-1: var(--ts-color-brand);
+  --ts-on-cw-1: var(--ts-color-bg);
+  --ts-cw-2: var(--ts-color-accent);
+  --ts-on-cw-2: var(--ts-color-ink);
+  --ts-cw-3: var(--ts-color-ink);
+  --ts-on-cw-3: var(--ts-color-bg);
+  --ts-bg-muted:             #f5f5f5;
+  --ts-text-muted:           #666666;
+  --ts-border-light:         #e0e0e0;
+  --ts-border-dark:          #333333;
+  /* === GRADIENT ===
+     A per-brand token type DeskFlex doesn't have at all -- TillerStack's brand
+     guide (page 8) specifies one explicitly. First-class, not a color hack. */
+  --ts-gradient-hero:        linear-gradient(-23deg, #31bcff 0%, #006599 100%);
+  /* === TYPOGRAPHY === */
+  --ts-font-headline:        'Rethink Sans', sans-serif;
+  --ts-font-body:            'Public Sans', sans-serif;
+  --ts-h1-size:              48px;
+  --ts-h2-size:              36px;
+  --ts-h3-size:              24px;
+  --ts-h4-size:              20px;
+  --ts-body-size:            16px;
+  --ts-body-lh:              1.65;
+  /* === BUTTONS === */
+  --ts-btn-primary-bg:       #006599;
+  --ts-btn-primary-text:     #ffffff;
+  --ts-btn-primary-hover-bg: #2b83ab;
+  --ts-btn-secondary-bg:     #000000;
+  --ts-btn-secondary-text:   #006599;
+  --ts-btn-secondary-border: #006599;
+  --ts-btn-radius:           5px;
+  --ts-btn-pad-v:            14px;
+  --ts-btn-pad-h:            36px;
+  --ts-btn-font-size:        16px;
+  --ts-btn-font-weight:      600;
+  /* === SPACING === */
+  --ts-max-width:            1200px;
+  --ts-section-pad-v:        96px;
+  --ts-section-pad-h:        30px;
+  --ts-flow-gap:             30px; /* stacked-row rhythm; established default (Ops, 2026-08-18) */
+  --ts-card-radius:          16px;
+  /* === SHADOWS === */
+  --ts-shadow-sm:            0 1px 3px rgba(0, 0, 0, 0.08);
+  --ts-shadow-md:            0 4px 12px rgba(0, 0, 0, 0.10);
+  --ts-shadow-lg:            0 8px 30px rgba(0, 0, 0, 0.12);
+  /* === HEADER === */
+  --ts-nav-bg:               #303131;
+  --ts-nav-text:             #ffffff;
+  /* === FOOTER === */
+  --ts-footer-bg:            #303131;
+  --ts-footer-text:          #ffffff;
+  --ts-footer-link:          #ffffff;
+  /* ============================================================
+     Role tokens (--ts-*) — SPEC-018 v0.5 output namespace
+     The role vocabulary every canonical component references. Authored in
+     _base as --zt-*; the stamp rewrites that to this brand's prefix, so the
+     role NAMES are identical across brands and only the values differ. De-inverted:
+     `bg` = page ground, `ink` = primary text. Brand ACCENTS are the one
+     genuinely per-brand section (below) — each skin declares how many it
+     has (OS = 1, DF = 2, TS = 1 + a hero gradient).
+     ============================================================ */
+  /* surfaces + ink */
+  --ts-bg:              #f3f3f3;
+  --ts-ink:             #303131;
+  --ts-ink-muted:       #666666;
+  --ts-border:          #e0e0e0;
+  --ts-form-error:      #EF6B51;   /* semantic: validation + required markers, not a brand accent */
+  --ts-border-strong:   #333333;
+  /* surface inks — the text colour each non-page surface carries. TillerStack
+     does NOT invert (light page + light muted panels + white cards), so
+     `on-muted`/`on-card` repeat the ink and cards use the page ground. */
+  --ts-on-muted:        #303131;
+  --ts-card-bg:         #f3f3f3;
+  --ts-on-card:         #303131;
+  /* white panel surface — the brochure's language is white panels on the gray
+     page ground (--ts-bg / --ts-bg-muted are near-white grays that melt into
+     each other). Brands that invert (e.g. OS dark page) define this darker. */
+  --ts-surface:         #ffffff;
+  /* brand accents — TillerStack declares ONE (Sky Blue) plus a hero gradient */
+  --ts-accent-1:        #31bcff;
+  --ts-glow:          #31bcff;
+  --ts-on-accent:       #303131;
+  /* accent-ink — text-safe accent. --ts-accent-1 (Sky Blue) is a FILL colour;
+     as TEXT on --ts-bg it fails WCAG (~1.9:1). accent-ink is the deep brand
+     blue (same value as the primary button, ~5.6:1) for accent text: headings,
+     keyword spans, list markers. */
+  --ts-accent-ink:      #006599;
+  /* type */
+  --ts-font-head:       'Rethink Sans', sans-serif;
+  /* buttons */
+  --ts-btn-primary-hover:   #2b83ab;
+  /* space + shape */
+  /* elevation */
+  /* chrome */
+}

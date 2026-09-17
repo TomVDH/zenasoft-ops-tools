@@ -1,0 +1,197 @@
+/* Deskflex — resolved token values
+   Generated from theme-overrides.css + fields.json
+
+   PREFIX ON THE PORTAL: --df-*
+   Write this prefix verbatim. The Page Factory has no stamp step, so
+   --zt-* would resolve to nothing and the declaration would be dropped.
+
+   BUTTONS THIS BRAND'S THEME DEFINES:
+     base       class="button"
+     colourway  button--cw-1, button--cw-2, button--cw-3
+     modes      button--mode-inverse, button--mode-outline
+   Generated from this theme. Use what is listed; the theme provides the
+   CSS, so the body defines no button styles of its own.
+
+   EMAIL PALETTE — literal hex for emails. Email clients ignore var().
+     card-bg        #ffffff   the card your content sits on
+     button-bg      #c8b266   CTA button fill, letterhead rule
+     button-text    #191a1a   CTA button label
+     footer-bg      #144478   footer band
+     footer-text    #ffffff   footer copy and links
+     page-ground    #f2f7fd   area behind the card
+     ink            #191a1a   body copy and headings
+     heading-font   'Plus Jakarta Sans', Arial, Helvetica, sans-serif
+     body-font      'Plus Jakarta Sans', Arial, Helvetica, sans-serif
+   The brand's Email Shell reads these same theme fields, so an email
+   built from this block matches the letterhead and footer it lands in.
+   card-bg is the card your content sits on. On a dark brand it is dark,
+   so read ink against it and never assume white.
+
+   TOKENS THIS BRAND DEFINES: every custom property below. A var() on a
+   name that is not below does not resolve. */
+
+:root {
+  /* === COLOURS === */
+  --df-color-dark:           #191a1a;  /* ink, #191a1a */
+  --df-color-light:          #ffffff;    /* page ground, #ffffff */
+  --df-color-gold:           #c8b266;
+  --df-color-blue:           #163a64;
+  --df-color-yellow:         #edca68;
+  /* BUTTON COLOURWAYS (THEME-LAYERS L2 values for the L1 capability).
+     stamp.colourway_count() counts these --df-cw-<n> lines (the --df-on-cw-<n>
+     ink pair is excluded by its regex). _base's _button loops 1..count and
+     paints them. DeskFlex takes 3; ink is light on the dark navy, dark on the
+     light golds. DeskFlex ships NO mode — see brand-styles.json offers.mode: []. */
+  --df-cw-1: var(--df-color-blue);
+  --df-on-cw-1: var(--df-color-light);
+  --df-cw-2: var(--df-color-gold);
+  --df-on-cw-2: var(--df-color-blue);
+  --df-cw-3: var(--df-color-yellow);
+  --df-on-cw-3: var(--df-color-blue);
+  --df-bg-muted:             #f2f7fd;
+  --df-text-muted:           #555858;
+  --df-border-light:         #e5e6e6;
+  --df-border-dark:          #333333;
+  /* === TYPOGRAPHY === */
+  --df-font-headline:        'Plus Jakarta Sans', sans-serif;
+  --df-font-body:            'Plus Jakarta Sans', sans-serif;
+  --df-h1-size:              60px;
+  --df-h2-size:              36px;
+  --df-h3-size:              18px;
+  --df-h4-size:              20px;
+  --df-body-size:            18px;
+  --df-body-lh:              1.625;
+  /* === BUTTONS === */
+  --df-btn-primary-bg:       #c8b266;
+  --df-btn-primary-text:     #191a1a;
+  /* DFE20 (Ops-ruled) -- _base's primary preset has no border var of its own;
+     it hardcodes `border: 2px solid var(--df-btn-primary-bg)`. This var exists
+     so the DFE20 override below (wrapper-ID targeted, in _df-enrich.css) has
+     a themed value to apply instead of a literal. */
+  --df-btn-primary-border:   #a08e52;
+  --df-btn-primary-hover-bg: #b09d5a;
+  --df-btn-secondary-bg:     #f2f7fd;
+  --df-btn-secondary-text:   #424343;
+  --df-btn-secondary-border: #e5e6e6;
+  --df-btn-radius:           8px;
+  --df-btn-pad-v:            14px;
+  --df-btn-pad-h:            28px;
+  --df-btn-font-size:        16px;
+  --df-btn-font-weight:      600;
+  /* === SPACING === */
+  --df-max-width:            1200px;
+  --df-section-pad-v:        112px;
+  --df-section-pad-h:        30px;
+  --df-flow-gap:             30px; /* stacked-row rhythm; established default (Ops, 2026-08-18) */
+  --df-card-radius:          16px;
+  /* === SHADOWS ===
+     DFE11 (2026-08-31): retired from USE, not from declaration — these three
+     roles are part of _base's required 43-role contract (SKIN gate: every
+     web brand must define --zt-shadow-sm/-md/-lg or the build fails for
+     that brand), so they stay declared even though nothing in DF's own CSS
+     reads them anymore. Every real usage across this theme (root-
+     templates.css, components/*, module.css files) now reads
+     --df-shadow-card instead, or drops its shadow entirely where the
+     element is not a card (Feel rule: "one shadow family only, on cards.
+     Nothing else casts."). --df-shadow-card is declared below, in the
+     Enrichment block. */
+  --df-shadow-sm:            0 1px 3px rgba(0, 0, 0, 0.08);
+  --df-shadow-md:            0 4px 12px rgba(0, 0, 0, 0.10);
+  --df-shadow-lg:            0 8px 30px rgba(0, 0, 0, 0.12);
+  /* === HEADER === */
+  --df-nav-bg:               #ffffff;
+  --df-nav-text:             #424343;
+  /* === FOOTER === */
+  --df-footer-bg:            #144478;
+  --df-footer-text:          #ffffff;
+  --df-footer-link:          #c1dbf6;
+  /* ============================================================
+     Role tokens (--df-*) — SPEC-018 v0.5 output namespace
+     The role vocabulary every canonical component references. Authored in
+     _base as --zt-*; the stamp rewrites that to this brand's prefix, so the
+     role NAMES are identical across brands and only the values differ. De-inverted:
+     `bg` = page ground, `ink` = primary text (retires the misleading old
+     colour-dark/-light names). Brand ACCENTS are the one genuinely per-brand
+     section (below) — each skin declares how many it has (OS = 1, DF = 2).
+     Everything above the accents is byte-identical across brands.
+     ============================================================ */
+  /* surfaces + ink */
+  --df-bg:              #ffffff;
+  --df-ink:             #191a1a;
+  --df-ink-muted:       #555858;
+  --df-border:          #e5e6e6;
+  --df-form-error:      #EF6B51;   /* semantic: validation + required markers, not a brand accent */
+  --df-border-strong:   #333333;
+  /* Card panels (feature-blocks, comparison-table, faq-accordion, split-cta's
+     form panel — G20, DeskFlex Proof Run). DFE7 (2026-08-31): the translucent
+     navy overlay was the pre-enrichment fix for G20 (white-on-white). Post-
+     enrichment, DF's card family is a real opaque white card (Feel rule: card
+     shadow is the only shadow, cards are white+hairline+r16 across every one
+     of the 22 blocks) — an 8% navy wash under that reads as a stray tint, not
+     a card. Opaque white + the hairline token, matching every other card
+     surface in this theme now. */
+  --df-panel-bg:        #ffffff;
+  --df-panel-border:    var(--df-border-light);
+  /* surface inks — the text colour each non-page surface carries. DeskFlex does
+     NOT invert (light page + light muted panels + white cards), so `on-muted`/
+     `on-card` repeat the ink and cards use the page ground. */
+  --df-on-muted:        #191a1a;
+  --df-card-bg:         #ffffff;
+  --df-on-card:         #191a1a;
+  /* brand accents — DeskFlex declares TWO (gold, yellow) */
+  --df-accent-1:        #c8b266;
+  --df-glow:          #c8b266;
+  --df-accent-2:        #edca68;
+  /* Text-safe accent (G40, DeskFlex Proof Run QA). _base's own comment on this
+     role says it plainly: "a fill accent can fail WCAG as text" — the fallback
+     is --zt-accent-1 (raw gold #c8b266), which is ~2.1:1 on DF's white/muted
+     page ground, well under the 4.5:1 AA floor. #846226 is the same gold hue
+     darkened until it clears AA on both --df-bg (#fff, 5.59:1) and
+     --df-bg-muted (now #f2f7fd tint post-enrichment, still ~5:1+ — the tint
+     is barely darker than white) — computed, not eyeballed. */
+  --df-accent-ink:      #846226;
+  --df-on-accent:       #191a1a;
+  /* type */
+  --df-font-head:       'Plus Jakarta Sans', sans-serif;
+  /* buttons */
+  --df-btn-primary-hover:   #b09d5a;
+  /* ============================================================
+     DF ENRICHMENT — Layer-2 tokens (2026-08-27, DF-ENRICH-BRIEF.md)
+     Promoted from templates/lp1.css's quarantined --df-fig-* set (LP1's own
+     Figma pull, get_variable_defs, node 25590:854 — not re-measured, same
+     values). LP1 kept these page-scoped because promoting them changes ink/
+     tint/border theme-wide, which needed Ops' sign-off (his own note in
+     lp1.css said so). This enrichment IS that sign-off — brief approver: Ops.
+     No fields.json slot exists for these (band, tint-2, on-band, on-band-
+     muted, eyebrow, pill-border are new roles, not overrides of an existing
+     one), so they are hardcoded custom properties here rather than templated
+     from theme.colors.*, matching how --df-accent-ink above is authored.
+     ============================================================ */
+  /* --- ink-2 (--df-ink already covers the enrichment's primary ink #191a1a
+     via secondary_color; --df-text-muted already covers ink-3 #555858 via
+     text_muted — both are Layer-2 field overrides, not new roles) --- */
+  --df-ink-2:           #424343;
+  /* --- second tint, band, on-band pair --- */
+  --df-tint-2:          #e3edfb;
+  --df-band:            #144478;  /* DFE1: LP1-measured; registry navy #163a64 (--df-accent-2 / accent_blue) stays brand navy elsewhere — deliberately not resolved */
+  --df-on-band:         #ffffff;
+  --df-on-band-muted:   #c1dbf6;
+  /* --- eyebrow / accent-ink for labels, and the pill/hairline pair --- */
+  --df-eyebrow:         #134f91;
+  --df-pill-bg:         #f2f7fd;
+  --df-pill-border:     #c1dbf6;
+  /* --- the one shadow family (Feel rule: "one shadow family only, on
+     cards. Nothing else casts.") — replaces --df-shadow-sm/md/lg for every
+     enrichment card surface; the old scale stays defined for whatever
+     pre-enrichment CSS still references it, untouched. --- */
+  --df-shadow-card:     0 24px 48px -12px #0000002e, 0 4px 4px -2px #0000000a;
+  /* --- radius scale, strict: 8 buttons (button_border_radius field) /
+     12 chips / 14 images / 16 cards+panels (card_border_radius field) /
+     full pills. Chip/image/pill have no field slot, hardcoded here. --- */
+  --df-radius-chip:     12px;
+  --df-radius-image:    14px;
+  --df-radius-pill:     9999px;
+  /* space + shape */
+  /* elevation */
+  /* chrome */
+}

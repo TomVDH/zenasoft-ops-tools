@@ -1,0 +1,149 @@
+/* Zenadrone — resolved token values
+
+   *** Zenadrone IS NOT AVAILABLE IN THE PAGE FACTORY YET ***
+
+   SPEEDRUNNER STATUS: pending
+
+   Say exactly this to the marketer, then stop:
+
+     "The brand will be added on a next update. If urgent, please ask your Ops Person about it."
+
+   Do not build anything. Do not use the colours below. Do not offer a
+   workaround. Do not guess when it will be ready. The values are here
+   because other tooling reads this file, NOT because you may build.
+   Generated from theme-overrides.css + fields.json
+
+   PREFIX ON THE PORTAL: --zd-*
+   Write this prefix verbatim. The Page Factory has no stamp step, so
+   --zt-* would resolve to nothing and the declaration would be dropped.
+
+   BUTTONS THIS BRAND'S THEME DEFINES:
+     base       class="button"
+     colourway  button--cw-1, button--cw-2, button--cw-3
+     modes      button--mode-soft
+   Generated from this theme. Use what is listed; the theme provides the
+   CSS, so the body defines no button styles of its own.
+
+   EMAIL PALETTE — literal hex for emails. Email clients ignore var().
+     card-bg        #ffffff   the card your content sits on
+     button-bg      #005981   CTA button fill, letterhead rule
+     button-text    #ffffff   CTA button label
+     footer-bg      #103b5d   footer band
+     footer-text    #ffffff   footer copy and links
+     page-ground    #e7eef3   area behind the card
+     ink            #19181a   body copy and headings
+     heading-font   'Poppins', Arial, Helvetica, sans-serif
+     body-font      'Poppins', Arial, Helvetica, sans-serif
+   The brand's Email Shell reads these same theme fields, so an email
+   built from this block matches the letterhead and footer it lands in.
+   card-bg is the card your content sits on. On a dark brand it is dark,
+   so read ink against it and never assume white.
+
+   TOKENS THIS BRAND DEFINES: every custom property below. A var() on a
+   name that is not below does not resolve. */
+
+:root {
+  /* === COLOURS === */
+  --zd-color-bg:             #f9fafb;
+  --zd-color-ink:            #19181a;
+  --zd-color-brand:          #005981;
+  --zd-color-accent:         #d80004;
+  /* BUTTON COLOURWAYS (THEME-LAYERS L2 values for the L1 capability).
+     stamp.colourway_count() counts these --zd-cw-<n> lines. TillerStack takes 3,
+     and ships a DIFFERENT mode from Othership's outline — `soft`, a tinted fill.
+     That divergence is the point: a mode is per-brand, not a shared vocabulary. */
+  --zd-cw-1: var(--zd-color-brand);
+  --zd-on-cw-1: var(--zd-color-bg);
+  --zd-cw-2: var(--zd-color-accent);
+  --zd-on-cw-2: var(--zd-color-ink);
+  --zd-cw-3: var(--zd-color-ink);
+  --zd-on-cw-3: var(--zd-color-bg);
+  --zd-bg-muted:             #e7eef3;
+  --zd-text-muted:           #666666;
+  --zd-border-light:         #e0e0e0;
+  --zd-border-dark:          #333333;
+  /* === GRADIENT ===
+     A per-brand token type DeskFlex doesn't have at all -- TillerStack's brand
+     guide (page 8) specifies one explicitly. First-class, not a color hack. */
+  --zd-gradient-hero:        linear-gradient(-23deg, #d80004 0%, #005981 100%);
+  /* === TYPOGRAPHY === */
+  --zd-font-headline:        'Poppins', sans-serif;
+  --zd-font-body:            'Poppins', sans-serif;
+  --zd-h1-size:              48px;
+  --zd-h2-size:              36px;
+  --zd-h3-size:              24px;
+  --zd-h4-size:              20px;
+  --zd-body-size:            16px;
+  --zd-body-lh:              1.65;
+  /* === BUTTONS === */
+  --zd-btn-primary-bg:       #005981;
+  --zd-btn-primary-text:     #ffffff;
+  --zd-btn-primary-hover-bg: #1e71b5;
+  --zd-btn-secondary-bg:     #000000;
+  --zd-btn-secondary-text:   #005981;
+  --zd-btn-secondary-border: #005981;
+  --zd-btn-radius:           5px;
+  --zd-btn-pad-v:            14px;
+  --zd-btn-pad-h:            36px;
+  --zd-btn-font-size:        16px;
+  --zd-btn-font-weight:      600;
+  /* === SPACING === */
+  --zd-max-width:            1200px;
+  --zd-section-pad-v:        96px;
+  --zd-section-pad-h:        30px;
+  --zd-flow-gap:             30px; /* stacked-row rhythm; established default (Ops, 2026-08-18) */
+  --zd-card-radius:          16px;
+  /* === SHADOWS === */
+  --zd-shadow-sm:            0 1px 3px rgba(0, 0, 0, 0.08);
+  --zd-shadow-md:            0 4px 12px rgba(0, 0, 0, 0.10);
+  --zd-shadow-lg:            0 8px 30px rgba(0, 0, 0, 0.12);
+  /* === HEADER === */
+  --zd-nav-bg:               #103b5d;
+  --zd-nav-text:             #ffffff;
+  /* === FOOTER === */
+  --zd-footer-bg:            #103b5d;
+  --zd-footer-text:          #ffffff;
+  --zd-footer-link:          #ffffff;
+  /* ============================================================
+     Role tokens (--zd-*) — SPEC-018 v0.5 output namespace
+     The role vocabulary every canonical component references. Authored in
+     _base as --zt-*; the stamp rewrites that to this brand's prefix, so the
+     role NAMES are identical across brands and only the values differ. De-inverted:
+     `bg` = page ground, `ink` = primary text. Brand ACCENTS are the one
+     genuinely per-brand section (below) — each skin declares how many it
+     has (OS = 1, DF = 2, TS = 1 + a hero gradient).
+     ============================================================ */
+  /* surfaces + ink */
+  --zd-bg:              #f9fafb;
+  --zd-ink:             #19181a;
+  --zd-ink-muted:       #666666;
+  --zd-border:          #e0e0e0;
+  --zd-form-error:      #EF6B51;   /* semantic: validation + required markers, not a brand accent */
+  --zd-border-strong:   #333333;
+  /* surface inks — the text colour each non-page surface carries. TillerStack
+     does NOT invert (light page + light muted panels + white cards), so
+     `on-muted`/`on-card` repeat the ink and cards use the page ground. */
+  --zd-on-muted:        #19181a;
+  --zd-card-bg:         #f9fafb;
+  --zd-on-card:         #19181a;
+  /* white panel surface — the brochure's language is white panels on the gray
+     page ground (--zd-bg / --zd-bg-muted are near-white grays that melt into
+     each other). Brands that invert (e.g. OS dark page) define this darker. */
+  --zd-surface:         #ffffff;
+  /* brand accents — TillerStack declares ONE (Sky Blue) plus a hero gradient */
+  --zd-accent-1:        #d80004;
+  --zd-glow:          #d80004;
+  --zd-on-accent:       #19181a;
+  /* accent-ink — text-safe accent. --zd-accent-1 (Sky Blue) is a FILL colour;
+     as TEXT on --zd-bg it fails WCAG (~1.9:1). accent-ink is the deep brand
+     blue (same value as the primary button, ~5.6:1) for accent text: headings,
+     keyword spans, list markers. */
+  --zd-accent-ink:      #005981;
+  /* type */
+  --zd-font-head:       'Poppins', sans-serif;
+  /* buttons */
+  --zd-btn-primary-hover:   #1e71b5;
+  /* space + shape */
+  /* elevation */
+  /* chrome */
+}

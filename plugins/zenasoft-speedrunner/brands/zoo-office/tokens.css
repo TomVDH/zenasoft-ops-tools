@@ -1,0 +1,154 @@
+/* Zoo Office — resolved token values
+
+   *** Zoo Office IS NOT AVAILABLE IN THE PAGE FACTORY YET ***
+
+   SPEEDRUNNER STATUS: pending
+
+   Say exactly this to the marketer, then stop:
+
+     "The brand will be added on a next update. If urgent, please ask your Ops Person about it."
+
+   Do not build anything. Do not use the colours below. Do not offer a
+   workaround. Do not guess when it will be ready. The values are here
+   because other tooling reads this file, NOT because you may build.
+   Generated from theme-overrides.css + fields.json
+
+   PREFIX ON THE PORTAL: --zoo-*
+   Write this prefix verbatim. The Page Factory has no stamp step, so
+   --zt-* would resolve to nothing and the declaration would be dropped.
+
+   BUTTONS THIS BRAND'S THEME DEFINES:
+     base       class="button"
+     colourway  button--cw-1, button--cw-2, button--cw-3
+     modes      button--mode-soft
+   Generated from this theme. Use what is listed; the theme provides the
+   CSS, so the body defines no button styles of its own.
+
+   EMAIL PALETTE — literal hex for emails. Email clients ignore var().
+     card-bg        #ffffff   the card your content sits on
+     button-bg      #1f6f5c   CTA button fill, letterhead rule
+     button-text    #ffffff   CTA button label
+     footer-bg      #0d100f   footer band
+     footer-text    #ffffff   footer copy and links
+     page-ground    #1d2220   area behind the card
+     ink            #f4f4f4   body copy and headings
+     heading-font   'Poppins', Arial, Helvetica, sans-serif
+     body-font      'Poppins', Arial, Helvetica, sans-serif
+   The brand's Email Shell reads these same theme fields, so an email
+   built from this block matches the letterhead and footer it lands in.
+   card-bg is the card your content sits on. On a dark brand it is dark,
+   so read ink against it and never assume white.
+
+   THIS BRAND IS NOT READY FOR EMAIL:
+     - ink #f4f4f4 scores 1.1:1 on card-bg #ffffff, below 4.5
+   This brand builds PAGES normally. For an EMAIL, stop and tell the marketer
+   the brand is not set up for email yet, and why. Never substitute a colour.
+
+   TOKENS THIS BRAND DEFINES: every custom property below. A var() on a
+   name that is not below does not resolve. */
+
+:root {
+  /* === COLOURS === */
+  --zoo-color-bg:             #141716;
+  --zoo-color-ink:            #f4f4f4;
+  --zoo-color-brand:          #1f6f5c;
+  --zoo-color-accent:         #8fd6bd;
+  /* BUTTON COLOURWAYS (THEME-LAYERS L2 values for the L1 capability).
+     stamp.colourway_count() counts these --zoo-cw-<n> lines. TillerStack takes 3,
+     and ships a DIFFERENT mode from Othership's outline — `soft`, a tinted fill.
+     That divergence is the point: a mode is per-brand, not a shared vocabulary. */
+  --zoo-cw-1: var(--zoo-color-brand);
+  --zoo-on-cw-1: var(--zoo-color-bg);
+  --zoo-cw-2: var(--zoo-color-accent);
+  --zoo-on-cw-2: var(--zoo-color-ink);
+  --zoo-cw-3: var(--zoo-color-ink);
+  --zoo-on-cw-3: var(--zoo-color-bg);
+  --zoo-bg-muted:             #1d2220;
+  --zoo-text-muted:           #666666;
+  --zoo-border-light:         #e0e0e0;
+  --zoo-border-dark:          #333333;
+  /* === GRADIENT ===
+     A per-brand token type DeskFlex doesn't have at all -- TillerStack's brand
+     guide (page 8) specifies one explicitly. First-class, not a color hack. */
+  --zoo-gradient-hero:        linear-gradient(-23deg, #8fd6bd 0%, #1f6f5c 100%);
+  /* === TYPOGRAPHY === */
+  --zoo-font-headline:        'Poppins', sans-serif;
+  --zoo-font-body:            'Poppins', sans-serif;
+  --zoo-h1-size:              48px;
+  --zoo-h2-size:              36px;
+  --zoo-h3-size:              24px;
+  --zoo-h4-size:              20px;
+  --zoo-body-size:            16px;
+  --zoo-body-lh:              1.65;
+  /* === BUTTONS === */
+  --zoo-btn-primary-bg:       #1f6f5c;
+  --zoo-btn-primary-text:     #ffffff;
+  --zoo-btn-primary-hover-bg: #2a8a73;
+  --zoo-btn-secondary-bg:     #000000;
+  --zoo-btn-secondary-text:   #1f6f5c;
+  --zoo-btn-secondary-border: #1f6f5c;
+  --zoo-btn-radius:           5px;
+  --zoo-btn-pad-v:            14px;
+  --zoo-btn-pad-h:            36px;
+  --zoo-btn-font-size:        16px;
+  --zoo-btn-font-weight:      600;
+  /* === SPACING === */
+  --zoo-max-width:            1200px;
+  --zoo-section-pad-v:        96px;
+  --zoo-section-pad-h:        30px;
+  --zoo-flow-gap:             30px; /* stacked-row rhythm; established default (Ops, 2026-08-18) */
+  --zoo-card-radius:          16px;
+  /* === SHADOWS === */
+  --zoo-shadow-sm:            0 1px 3px rgba(0, 0, 0, 0.08);
+  --zoo-shadow-md:            0 4px 12px rgba(0, 0, 0, 0.10);
+  --zoo-shadow-lg:            0 8px 30px rgba(0, 0, 0, 0.12);
+  /* === HEADER === */
+  --zoo-nav-bg:               #0d100f;
+  --zoo-nav-text:             #ffffff;
+  /* === FOOTER === */
+  --zoo-footer-bg:            #0d100f;
+  --zoo-footer-text:          #ffffff;
+  --zoo-footer-link:          #ffffff;
+  /* ============================================================
+     Role tokens (--zoo-*) — SPEC-018 v0.5 output namespace
+     The role vocabulary every canonical component references. Authored in
+     _base as --zt-*; the stamp rewrites that to this brand's prefix, so the
+     role NAMES are identical across brands and only the values differ. De-inverted:
+     `bg` = page ground, `ink` = primary text. Brand ACCENTS are the one
+     genuinely per-brand section (below) — each skin declares how many it
+     has (OS = 1, DF = 2, TS = 1 + a hero gradient).
+     ============================================================ */
+  /* surfaces + ink */
+  --zoo-bg:              #141716;
+  --zoo-ink:             #f4f4f4;
+  --zoo-ink-muted:       #666666;
+  --zoo-border:          #e0e0e0;
+  --zoo-form-error:      #EF6B51;   /* semantic: validation + required markers, not a brand accent */
+  --zoo-border-strong:   #333333;
+  /* surface inks — the text colour each non-page surface carries. TillerStack
+     does NOT invert (light page + light muted panels + white cards), so
+     `on-muted`/`on-card` repeat the ink and cards use the page ground. */
+  --zoo-on-muted:        #f4f4f4;
+  --zoo-card-bg:         #141716;
+  --zoo-on-card:         #f4f4f4;
+  /* white panel surface — the brochure's language is white panels on the gray
+     page ground (--zoo-bg / --zoo-bg-muted are near-white grays that melt into
+     each other). Brands that invert (e.g. OS dark page) define this darker. */
+  --zoo-surface:         #ffffff;
+  /* brand accents — TillerStack declares ONE (Sky Blue) plus a hero gradient */
+  --zoo-accent-1:        #8fd6bd;
+  --zoo-glow:          #8fd6bd;
+  --zoo-on-accent:       #f4f4f4;
+  /* accent-ink — text-safe accent. --zoo-accent-1 (Sky Blue) is a FILL colour;
+     as TEXT on --zoo-bg it fails WCAG (~1.9:1). accent-ink is the deep brand
+     blue (same value as the primary button, ~5.6:1) for accent text: headings,
+     keyword spans, list markers. */
+  --zoo-accent-ink:      #1f6f5c;
+  /* type */
+  --zoo-font-head:       'Poppins', sans-serif;
+  /* buttons */
+  --zoo-btn-primary-hover:   #2a8a73;
+  /* space + shape */
+  /* elevation */
+  /* chrome */
+}

@@ -1,0 +1,137 @@
+/* Nowsolutions — resolved token values
+   Generated from theme-overrides.css + fields.json
+
+   PREFIX ON THE PORTAL: --nws-*
+   Write this prefix verbatim. The Page Factory has no stamp step, so
+   --zt-* would resolve to nothing and the declaration would be dropped.
+
+   BUTTONS THIS BRAND'S THEME DEFINES:
+     base       class="button"
+     colourway  button--cw-1, button--cw-2, button--cw-3
+     modes      button--mode-soft
+   Generated from this theme. Use what is listed; the theme provides the
+   CSS, so the body defines no button styles of its own.
+
+   EMAIL PALETTE — literal hex for emails. Email clients ignore var().
+     card-bg        #ffffff   the card your content sits on
+     button-bg      #000000   CTA button fill, letterhead rule
+     button-text    #ffffff   CTA button label
+     footer-bg      #000000   footer band
+     footer-text    #ffffff   footer copy and links
+     page-ground    #f1f1f1   area behind the card
+     ink            #000000   body copy and headings
+     heading-font   'Poppins', Arial, Helvetica, sans-serif
+     body-font      'PT Sans', Arial, Helvetica, sans-serif
+   The brand's Email Shell reads these same theme fields, so an email
+   built from this block matches the letterhead and footer it lands in.
+   card-bg is the card your content sits on. On a dark brand it is dark,
+   so read ink against it and never assume white.
+
+   TOKENS THIS BRAND DEFINES: every custom property below. A var() on a
+   name that is not below does not resolve. */
+
+:root {
+  /* === COLOURS === */
+  --nws-color-bg:             #ffffff;
+  --nws-color-ink:            #000000;
+  --nws-color-brand:          #000000;
+  --nws-color-accent:         #dd130b;
+  /* BUTTON COLOURWAYS (THEME-LAYERS L2 values for the L1 capability).
+     stamp.colourway_count() counts these --nws-cw-<n> lines. TillerStack takes 3,
+     and ships a DIFFERENT mode from Othership's outline — `soft`, a tinted fill.
+     That divergence is the point: a mode is per-brand, not a shared vocabulary. */
+  --nws-cw-1: var(--nws-color-brand);
+  --nws-on-cw-1: var(--nws-color-bg);
+  --nws-cw-2: var(--nws-color-accent);
+  --nws-on-cw-2: var(--nws-color-ink);
+  --nws-cw-3: var(--nws-color-ink);
+  --nws-on-cw-3: var(--nws-color-bg);
+  --nws-bg-muted:             #f1f1f1;
+  --nws-text-muted:           #666666;
+  --nws-border-light:         #dddddd;
+  --nws-border-dark:          #333333;
+  /* === GRADIENT ===
+     A per-brand token type DeskFlex doesn't have at all -- TillerStack's brand
+     guide (page 8) specifies one explicitly. First-class, not a color hack. */
+  --nws-gradient-hero:        linear-gradient(-23deg, #6b7681 0%, #3f4a54 100%);
+  /* === TYPOGRAPHY === */
+  --nws-font-headline:        'Poppins', sans-serif;
+  --nws-font-body:            'PT Sans', sans-serif;
+  --nws-h1-size:              46px;
+  --nws-h2-size:              32px;
+  --nws-h3-size:              26px;
+  --nws-h4-size:              20px;
+  --nws-body-size:            16px;
+  --nws-body-lh:              1.6;
+  /* === BUTTONS === */
+  --nws-btn-primary-bg:       #000000;
+  --nws-btn-primary-text:     #ffffff;
+  --nws-btn-primary-hover-bg: #dd130b;
+  --nws-btn-secondary-bg:     #dd130b;
+  --nws-btn-secondary-text:   #ffffff;
+  --nws-btn-secondary-border: #dd130b;
+  --nws-btn-radius:           0px;
+  --nws-btn-pad-v:            14px;
+  --nws-btn-pad-h:            36px;
+  --nws-btn-font-size:        16px;
+  --nws-btn-font-weight:      700;
+  /* === SPACING === */
+  --nws-max-width:            1200px;
+  --nws-section-pad-v:        60px;
+  --nws-section-pad-h:        30px;
+  --nws-flow-gap:             30px; /* stacked-row rhythm; established default (Ops, 2026-08-18) */
+  --nws-card-radius:          16px;
+  /* === SHADOWS === */
+  --nws-shadow-sm:            0 1px 3px rgba(0, 0, 0, 0.08);
+  --nws-shadow-md:            0 4px 12px rgba(0, 0, 0, 0.10);
+  --nws-shadow-lg:            0 8px 30px rgba(0, 0, 0, 0.12);
+  /* === HEADER === */
+  --nws-nav-bg:               #ffffff;
+  --nws-nav-text:             #000000;
+  /* === FOOTER === */
+  --nws-footer-bg:            #000000;
+  --nws-footer-text:          #ffffff;
+  --nws-footer-link:          #f1f1f1;
+  /* ============================================================
+     Role tokens (--nws-*) — SPEC-018 v0.5 output namespace
+     The role vocabulary every canonical component references. Authored in
+     _base as --zt-*; the stamp rewrites that to this brand's prefix, so the
+     role NAMES are identical across brands and only the values differ. De-inverted:
+     `bg` = page ground, `ink` = primary text. Brand ACCENTS are the one
+     genuinely per-brand section (below) — each skin declares how many it
+     has (OS = 1, DF = 2, TS = 1 + a hero gradient).
+     ============================================================ */
+  /* surfaces + ink */
+  --nws-bg:              #ffffff;
+  --nws-ink:             #000000;
+  --nws-ink-muted:       #666666;
+  --nws-border:          #dddddd;
+  --nws-form-error:      #EF6B51;   /* semantic: validation + required markers, not a brand accent */
+  --nws-border-strong:   #333333;
+  /* surface inks — the text colour each non-page surface carries. TillerStack
+     does NOT invert (light page + light muted panels + white cards), so
+     `on-muted`/`on-card` repeat the ink and cards use the page ground. */
+  --nws-on-muted:        #000000;
+  --nws-card-bg:         #ffffff;
+  --nws-on-card:         #000000;
+  /* white panel surface — the brochure's language is white panels on the gray
+     page ground (--nws-bg / --nws-bg-muted are near-white grays that melt into
+     each other). Brands that invert (e.g. OS dark page) define this darker. */
+  --nws-surface:         #ffffff;
+  /* brand accents — TillerStack declares ONE (Sky Blue) plus a hero gradient */
+  --nws-accent-1:        #dd130b;
+  --nws-glow:          #dd130b;
+  --nws-on-accent:       #000000;
+  /* accent-ink — text-safe accent. --nws-accent-1 (Sky Blue) is a FILL colour;
+     as TEXT on --nws-bg it fails WCAG (~1.9:1). accent-ink is the deep brand
+     blue (same value as the primary button, ~5.6:1) for accent text: headings,
+     keyword spans, list markers. */
+  --nws-accent-ink:      #000000;
+  /* type */
+  --nws-font-head:       'Poppins', sans-serif;
+  /* buttons */
+  --nws-btn-primary-hover:   #dd130b;
+  /* space + shape */
+  /* elevation */
+  /* chrome */
+}

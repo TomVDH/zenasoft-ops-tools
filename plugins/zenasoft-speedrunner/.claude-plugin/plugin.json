@@ -1,0 +1,9 @@
+{
+  "name": "zenasoft-speedrunner",
+  "version": "1.1.17",
+  "description": "ZenaSoft Speedrunner — a marketer describes a landing page or a simple email, and this builds it in the brand's real colours, ready for the HubSpot admin to install. /page-speedrun, /email-speedrun, /speedrun-help.",
+  "author": {
+    "name": "ZenaSoft"
+  },
+  "license": "MIT"
+}

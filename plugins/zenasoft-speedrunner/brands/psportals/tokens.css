@@ -1,0 +1,149 @@
+/* Psportals — resolved token values
+
+   *** Psportals IS NOT AVAILABLE IN THE PAGE FACTORY YET ***
+
+   SPEEDRUNNER STATUS: pending
+
+   Say exactly this to the marketer, then stop:
+
+     "The brand will be added on a next update. If urgent, please ask your Ops Person about it."
+
+   Do not build anything. Do not use the colours below. Do not offer a
+   workaround. Do not guess when it will be ready. The values are here
+   because other tooling reads this file, NOT because you may build.
+   Generated from theme-overrides.css + fields.json
+
+   PREFIX ON THE PORTAL: --ps-*
+   Write this prefix verbatim. The Page Factory has no stamp step, so
+   --zt-* would resolve to nothing and the declaration would be dropped.
+
+   BUTTONS THIS BRAND'S THEME DEFINES:
+     base       class="button"
+     colourway  button--cw-1, button--cw-2, button--cw-3
+     modes      button--mode-soft
+   Generated from this theme. Use what is listed; the theme provides the
+   CSS, so the body defines no button styles of its own.
+
+   EMAIL PALETTE — literal hex for emails. Email clients ignore var().
+     card-bg        #ffffff   the card your content sits on
+     button-bg      #182c52   CTA button fill, letterhead rule
+     button-text    #ffffff   CTA button label
+     footer-bg      #232434   footer band
+     footer-text    #ffffff   footer copy and links
+     page-ground    #eef0f4   area behind the card
+     ink            #232434   body copy and headings
+     heading-font   'Plus Jakarta Sans', Arial, Helvetica, sans-serif
+     body-font      'Plus Jakarta Sans', Arial, Helvetica, sans-serif
+   The brand's Email Shell reads these same theme fields, so an email
+   built from this block matches the letterhead and footer it lands in.
+   card-bg is the card your content sits on. On a dark brand it is dark,
+   so read ink against it and never assume white.
+
+   TOKENS THIS BRAND DEFINES: every custom property below. A var() on a
+   name that is not below does not resolve. */
+
+:root {
+  /* === COLOURS === */
+  --ps-color-bg:             #f9f9f9;
+  --ps-color-ink:            #232434;
+  --ps-color-brand:          #182c52;
+  --ps-color-accent:         #cd1f36;
+  /* BUTTON COLOURWAYS (THEME-LAYERS L2 values for the L1 capability).
+     stamp.colourway_count() counts these --ps-cw-<n> lines. TillerStack takes 3,
+     and ships a DIFFERENT mode from Othership's outline — `soft`, a tinted fill.
+     That divergence is the point: a mode is per-brand, not a shared vocabulary. */
+  --ps-cw-1: var(--ps-color-brand);
+  --ps-on-cw-1: var(--ps-color-bg);
+  --ps-cw-2: var(--ps-color-accent);
+  --ps-on-cw-2: var(--ps-color-ink);
+  --ps-cw-3: var(--ps-color-ink);
+  --ps-on-cw-3: var(--ps-color-bg);
+  --ps-bg-muted:             #eef0f4;
+  --ps-text-muted:           #666666;
+  --ps-border-light:         #e0e0e0;
+  --ps-border-dark:          #333333;
+  /* === GRADIENT ===
+     A per-brand token type DeskFlex doesn't have at all -- TillerStack's brand
+     guide (page 8) specifies one explicitly. First-class, not a color hack. */
+  --ps-gradient-hero:        linear-gradient(-23deg, #cd1f36 0%, #182c52 100%);
+  /* === TYPOGRAPHY === */
+  --ps-font-headline:        'Plus Jakarta Sans', sans-serif;
+  --ps-font-body:            'Plus Jakarta Sans', sans-serif;
+  --ps-h1-size:              48px;
+  --ps-h2-size:              36px;
+  --ps-h3-size:              24px;
+  --ps-h4-size:              20px;
+  --ps-body-size:            16px;
+  --ps-body-lh:              1.65;
+  /* === BUTTONS === */
+  --ps-btn-primary-bg:       #182c52;
+  --ps-btn-primary-text:     #ffffff;
+  --ps-btn-primary-hover-bg: #101f3c;
+  --ps-btn-secondary-bg:     #000000;
+  --ps-btn-secondary-text:   #182c52;
+  --ps-btn-secondary-border: #182c52;
+  --ps-btn-radius:           5px;
+  --ps-btn-pad-v:            14px;
+  --ps-btn-pad-h:            36px;
+  --ps-btn-font-size:        16px;
+  --ps-btn-font-weight:      600;
+  /* === SPACING === */
+  --ps-max-width:            1200px;
+  --ps-section-pad-v:        96px;
+  --ps-section-pad-h:        30px;
+  --ps-flow-gap:             30px; /* stacked-row rhythm; established default (Ops, 2026-08-18) */
+  --ps-card-radius:          16px;
+  /* === SHADOWS === */
+  --ps-shadow-sm:            0 1px 3px rgba(0, 0, 0, 0.08);
+  --ps-shadow-md:            0 4px 12px rgba(0, 0, 0, 0.10);
+  --ps-shadow-lg:            0 8px 30px rgba(0, 0, 0, 0.12);
+  /* === HEADER === */
+  --ps-nav-bg:               #232434;
+  --ps-nav-text:             #ffffff;
+  /* === FOOTER === */
+  --ps-footer-bg:            #232434;
+  --ps-footer-text:          #ffffff;
+  --ps-footer-link:          #ffffff;
+  /* ============================================================
+     Role tokens (--ps-*) — SPEC-018 v0.5 output namespace
+     The role vocabulary every canonical component references. Authored in
+     _base as --zt-*; the stamp rewrites that to this brand's prefix, so the
+     role NAMES are identical across brands and only the values differ. De-inverted:
+     `bg` = page ground, `ink` = primary text. Brand ACCENTS are the one
+     genuinely per-brand section (below) — each skin declares how many it
+     has (OS = 1, DF = 2, TS = 1 + a hero gradient).
+     ============================================================ */
+  /* surfaces + ink */
+  --ps-bg:              #f9f9f9;
+  --ps-ink:             #232434;
+  --ps-ink-muted:       #666666;
+  --ps-border:          #e0e0e0;
+  --ps-form-error:      #EF6B51;   /* semantic: validation + required markers, not a brand accent */
+  --ps-border-strong:   #333333;
+  /* surface inks — the text colour each non-page surface carries. TillerStack
+     does NOT invert (light page + light muted panels + white cards), so
+     `on-muted`/`on-card` repeat the ink and cards use the page ground. */
+  --ps-on-muted:        #232434;
+  --ps-card-bg:         #f9f9f9;
+  --ps-on-card:         #232434;
+  /* white panel surface — the brochure's language is white panels on the gray
+     page ground (--ps-bg / --ps-bg-muted are near-white grays that melt into
+     each other). Brands that invert (e.g. OS dark page) define this darker. */
+  --ps-surface:         #ffffff;
+  /* brand accents — TillerStack declares ONE (Sky Blue) plus a hero gradient */
+  --ps-accent-1:        #cd1f36;
+  --ps-glow:          #cd1f36;
+  --ps-on-accent:       #232434;
+  /* accent-ink — text-safe accent. --ps-accent-1 (Sky Blue) is a FILL colour;
+     as TEXT on --ps-bg it fails WCAG (~1.9:1). accent-ink is the deep brand
+     blue (same value as the primary button, ~5.6:1) for accent text: headings,
+     keyword spans, list markers. */
+  --ps-accent-ink:      #182c52;
+  /* type */
+  --ps-font-head:       'Plus Jakarta Sans', sans-serif;
+  /* buttons */
+  --ps-btn-primary-hover:   #101f3c;
+  /* space + shape */
+  /* elevation */
+  /* chrome */
+}

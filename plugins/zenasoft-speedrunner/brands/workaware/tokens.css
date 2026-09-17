@@ -1,0 +1,171 @@
+/* Workaware — resolved token values
+   Generated from theme-overrides.css + fields.json
+
+   PREFIX ON THE PORTAL: --wa-*
+   Write this prefix verbatim. The Page Factory has no stamp step, so
+   --zt-* would resolve to nothing and the declaration would be dropped.
+
+   BUTTONS THIS BRAND'S THEME DEFINES:
+     base       class="button"
+     colourway  button--cw-1
+     modes      button--mode-outline
+   Generated from this theme. Use what is listed; the theme provides the
+   CSS, so the body defines no button styles of its own.
+
+   EMAIL PALETTE — literal hex for emails. Email clients ignore var().
+     card-bg        #ffffff   the card your content sits on
+     button-bg      #FE9B00   CTA button fill, letterhead rule
+     button-text    #313B41   CTA button label
+     footer-bg      #0A4C70   footer band
+     footer-text    #ffffff   footer copy and links
+     page-ground    #F4F6F8   area behind the card
+     ink            #141D24   body copy and headings
+     heading-font   'Exo', Arial, Helvetica, sans-serif
+     body-font      'Exo', Arial, Helvetica, sans-serif
+   The brand's Email Shell reads these same theme fields, so an email
+   built from this block matches the letterhead and footer it lands in.
+   card-bg is the card your content sits on. On a dark brand it is dark,
+   so read ink against it and never assume white.
+
+   TOKENS THIS BRAND DEFINES: every custom property below. A var() on a
+   name that is not below does not resolve. */
+
+:root {
+  /* === COLOURS === */
+  --wa-color-bg:             #ffffff;
+  --wa-color-ink:             #141D24;
+  --wa-color-brand:          #0A4C70;
+  --wa-color-accent:         #FE9B00;
+  --wa-color-ground-dark:    #0A4C70;
+  /* BUTTON COLOURWAYS (THEME-LAYERS L2 values for the L1 capability).
+     stamp.colourway_count() counts these --wa-cw-<n> lines. WorkAware's guide
+     names ONE real accent (WA Orange, fill-only) plus SaaS Blue used for
+     buttons — one colourway, matching the actual palette rather than
+     inventing more. */
+  --wa-cw-1: var(--wa-color-brand);
+  --wa-on-cw-1: #ffffff;
+  --wa-bg-muted:             #F4F6F8;
+  --wa-text-muted:           #566470;
+  --wa-border-light:         #CCDAE0;
+  --wa-border-dark:          #B7C8CF;
+  /* === TYPOGRAPHY === */
+  --wa-font-headline:        'Exo', sans-serif;
+  --wa-font-body:            'Exo', sans-serif;
+  --wa-h1-size:              60px;
+  --wa-h2-size:              36px;
+  --wa-h3-size:              18px;
+  --wa-h4-size:              20px;
+  --wa-body-size:            16px;
+  --wa-body-lh:              1.5;
+  /* === BUTTONS === */
+  --wa-btn-primary-bg:       #FE9B00;
+  --wa-btn-primary-text:     #313B41;
+  --wa-btn-primary-hover-bg: #FFBB1B;
+  --wa-btn-secondary-bg:     #FFFFFF;
+  --wa-btn-secondary-text:   #313B41;
+  --wa-btn-secondary-border: #CCDAE0;
+  --wa-btn-radius:           10px;
+  --wa-btn-pad-v:            16px;
+  --wa-btn-pad-h:            25px;
+  --wa-btn-font-size:        16px;
+  --wa-btn-font-weight:      600;
+  /* === SPACING === */
+  --wa-max-width:            1200px;
+  --wa-section-pad-v:        96px;
+  --wa-section-pad-h:        30px;
+  --wa-flow-gap:             30px; /* stacked-row rhythm; established default (Ops, 2026-08-18) */
+  --wa-card-radius:          16px;
+  /* === SHADOWS === */
+  --wa-shadow-sm:            0 1px 3px rgba(0, 0, 0, 0.08);
+  --wa-shadow-md:            0 4px 12px rgba(0, 0, 0, 0.10);
+  --wa-shadow-lg:            0 8px 30px rgba(0, 0, 0, 0.12);
+  /* === HEADER === */
+  --wa-nav-bg:               #FFFFFF;
+  --wa-nav-text:             #313B41;
+  /* === FOOTER === */
+  --wa-footer-bg:            #0A4C70;
+  --wa-footer-text:          #ffffff;
+  --wa-footer-link:          #F0F9FF;
+  /* ============================================================
+     Role tokens (--wa-*) — SPEC-018 v0.5 output namespace
+     The role vocabulary every canonical component references. Authored in
+     _base as --zt-*; the stamp rewrites that to this brand's prefix, so the
+     role NAMES are identical across brands and only the values differ.
+     ============================================================ */
+  /* surfaces + ink */
+  --wa-bg:              #ffffff;
+  --wa-ink:             #141D24;
+  --wa-ink-muted:       #566470;
+  --wa-border:          #CCDAE0;
+  --wa-form-error:      #EF6B51;   /* semantic: validation + required markers, not a brand accent */
+  --wa-border-strong:   #B7C8CF;
+  /* Utility brand tint scale — confirmed against Industries Hub Figma
+     (node 25826:26718), the active capability-tab badge. Not in the
+     printed guide; inducted 2026-09-10. */
+  --wa-utility-brand-50:  #FFFAEA;
+  --wa-utility-brand-200: #FFE485;
+  --wa-utility-brand-700: #BB4F02;
+  /* Two distinct light-blue tints confirmed against the Industries Hub
+     Figma — not the same colour as --wa-bg-muted. Inducted 2026-09-10. */
+  --wa-bg-secondary:    #F0F9FF;
+  --wa-bg-primary-alt:  #DFF3FF;
+  /* Depicted macOS window-chrome dots on the Value Props mockup, not brand
+     colour — tokenised so a real depiction isn't silently recoloured. */
+  --wa-mockup-chrome-red:    #FF5F57;
+  --wa-mockup-chrome-yellow: #FEBC2E;
+  --wa-mockup-chrome-green:  #28C840;
+  /* surface inks — the text colour each non-page surface carries. WorkAware
+     does NOT invert (light page + light muted panels + white cards), so
+     `on-muted`/`on-card` repeat the ink and cards use the page ground. */
+  --wa-on-muted:        #141D24;
+  --wa-card-bg:         #ffffff;
+  --wa-on-card:         #141D24;
+  --wa-surface:         #ffffff;
+  /* Panel — computed, OPAQUE (brand sheet §4: "Never rgba(255,255,255,a) — a
+     translucent white panel disappears on the tint grounds"). --wa-panel-border
+     is WA Light Grey #6E808A, UNCHANGED from the guide — no derivation needed.
+     This is the Jadian --jd-panel-border case (a 20%-toward-Deep-Blue mix)
+     resolved the easy way: WA Light Grey already clears the 3:1 non-text
+     minimum on all three WorkAware grounds as printed (4.10/3.79/3.89).
+     Sourced beats derived. DaaS/DeskFlex G20 lesson applied from day one
+     instead of discovered after the fact. */
+  --wa-panel-bg:        #FFFFFF;
+  --wa-panel-border:    #6E808A;
+  /* brand accent — WA Orange, fill/decorative ONLY. Stricter than Jadian's
+     Light Blue (which at least cleared 3:1): WA Orange fails even the 3:1
+     WCAG non-text minimum on every WorkAware ground (2.12/1.96/2.01), so it
+     cannot be a border, focus ring or icon stroke either — a FILL, full
+     stop (brand sheet W4). */
+  --wa-accent-1:        #FE9B00;
+  --wa-glow:            #FE9B00;
+  /* WA Orange fill carries the ink token, never white — white on orange is
+     2.12:1 (brand sheet §3). The lift moved the ink to #141D24, so this pair
+     is now 8.04:1, up from WA Grey's 5.40:1. */
+  --wa-on-accent:       #141D24;
+  /* Text-safe accent (brand sheet §4). WA Orange fails AA as text everywhere
+     (2.12:1 on white down to 1.96:1 on the warm tint) — accent-role TEXT
+     (links, eyebrows, stat figures) uses a blue instead.
+     CHANGED BY THE LIFT (2026-09-04, WA-LIVE-LIFT.md): this was SaaS
+     Blue #006599 at 5.84:1 worst case; it is now the live --color-brand-blue
+     #0A4C70 at 8.50:1 worst case (9.21 white / 8.50 #F4F6F8 / 8.74 #FFF8EF).
+     SaaS Blue is NOT retired — it stays the band ground and the
+     secondary-button role. Two blues, deliberately not unified, the same
+     call DeskFlex made in DFE1. */
+  --wa-accent-ink:      #0A4C70;
+  --wa-on-accent-ink:   #ffffff;
+  /* Dark ground. The guide files no second dark colour, so this token used
+     to be WA Grey — the same value as the ink, doing both jobs.
+     CHANGED BY THE LIFT (2026-09-04, WA-LIVE-LIFT.md): the live site grounds its
+     footer and dark bands in #0A4C70, so the dark ground is now its own
+     colour and no longer tracks the ink. White on it is 9.21:1. The nav
+     ground is a separate field and still carries WA Grey. */
+  --wa-ground-dark:     #0A4C70;
+  --wa-ink-on-dark:     #ffffff;  /* pure white — every kit SVG on a dark ground is fill:#fff; no off-white exists in the kit */
+  /* type */
+  --wa-font-head:       'Exo', sans-serif;
+  /* buttons */
+  --wa-btn-primary-hover:   #FFBB1B;
+  /* space + shape */
+  /* elevation */
+  /* chrome */
+}
