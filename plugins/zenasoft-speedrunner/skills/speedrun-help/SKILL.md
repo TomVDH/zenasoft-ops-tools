@@ -28,7 +28,21 @@ Speedrunner is a plugin for Claude Code. Claude Code is a Claude app that runs i
 
 **Make a work folder.** Create one folder for your Speedrunner work, for example `Documents/speedrunner`. Every page and email you build lands in it. Keep it for Speedrunner only: no other files, no other apps saving into it. Speedrunner reads and writes everything in this folder, so it must be a folder you can open and change. OneDrive is fine. Always open Claude Code in that folder: in a terminal, type `cd` and the folder path, then press Enter. In the Claude Desktop app, pick that folder when it asks where to work.
 
-**Get it installed.** Marketing Operations installs Speedrunner on your computer with you, once. Book ten minutes with them. Claude Code is not on your computer yet? Say so; they set that up in the same session. When a new version is out, Marketing Operations tells you and updates it with you the same way.
+**Install it, once.** Open a terminal window. Type the first line and press Enter. Then the second line and Enter. Each answers with a green tick.
+
+```
+claude plugin marketplace add TomVDH/zenasoft-ops-tools
+claude plugin install zenasoft-speedrunner@zena-claude-plugins
+```
+
+Then close and reopen Claude Code. No account is needed. Claude Code is not on your computer yet, or a line fails? Ask Marketing Operations; they set it up with you in ten minutes.
+
+**Update.** When Marketing Operations says a new version is out, type these two lines, then close and reopen Claude Code:
+
+```
+claude plugin marketplace update zena-claude-plugins
+claude plugin update zenasoft-speedrunner@zena-claude-plugins
+```
 
 **Open it.** In a terminal, go to your work folder: type `cd`, a space, and the folder path, then press Enter. Then type `claude` and press Enter. In the Claude Desktop app, pick your work folder when it asks where to work. Then type one of the three commands in the next section.
 
@@ -110,4 +124,4 @@ Bring all six and the first build is close. Bring less and Speedrunner asks, one
 
 Do not paste or upload contact lists, spreadsheets, or any file with names and email addresses into this chat. Personal data never enters an AI tool. Send data files to Marketing Operations over Teams or email only.
 
-*ZenaSoft Speedrunner v1.1.17 · Internal use only*
+*ZenaSoft Speedrunner v1.1.18 · Internal use only*
