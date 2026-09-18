@@ -125,4 +125,4 @@ Bring all six and the first build is close. Bring less and Speedrunner asks, one
 
 Do not paste or upload contact lists, spreadsheets, or any file with names and email addresses into this chat. Personal data never enters an AI tool. Send data files to Marketing Operations over Teams or email only.
 
-*ZenaSoft Speedrunner v1.1.19 · Internal use only*
+*ZenaSoft Speedrunner v1.1.20 · Internal use only*

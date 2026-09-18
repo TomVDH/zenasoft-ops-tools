@@ -22,46 +22,46 @@ sequence. CTA band at the bottom.
 **Headline:** Keep Every Driver Accountable, Every Trip Recorded
 
 **Supporting text:** WorkAware Fleet Safety gives you real-time visibility into
-driver behaviour, vehicle condition, and compliance status — all from one
+driver behaviour, vehicle condition, and compliance status, all from one
 dashboard your team already uses.
 
 **Buttons:**
 - Book a Demo (primary)
 - See How It Works (ghost, links to #how-it-works)
 
-**Image:** Product screenshot — the Fleet Safety dashboard showing a map with
+**Image:** Product screenshot, the Fleet Safety dashboard showing a map with
 vehicle pins and a sidebar with driver scores. [Tom will provide the actual
 screenshot]
 
 ### 2. Features (three cards)
 
-**Card 1 — Driver Scorecards**
+**Card 1, Driver Scorecards**
 Track speeding, harsh braking, and idle time per driver. Scores update daily so
 supervisors see trends, not just incidents.
 
-**Card 2 — Pre-Trip Inspections**
+**Card 2, Pre-Trip Inspections**
 Digital checklists replace paper forms. Drivers complete inspections on their
 phone. Failed items flag automatically.
 
-**Card 3 — Compliance Alerts**
+**Card 3, Compliance Alerts**
 Licence expiry, training deadlines, and vehicle service dates in one view.
 Alerts go to the right person before something lapses.
 
-**Icons:** Simple line icons — a clipboard, a checklist, a bell. No emoji.
+**Icons:** Simple line icons, a clipboard, a checklist, a bell. No emoji.
 
 ### 3. How It Works
 
 **Heading:** Three Steps to Safer Fleets
 
-**Step 1 — Connect Your Fleet**
+**Step 1, Connect Your Fleet**
 Import your vehicle and driver lists. WorkAware syncs with your existing fleet
 management system.
 
-**Step 2 — Set Your Standards**
+**Step 2, Set Your Standards**
 Define scoring thresholds, inspection templates, and alert rules. Use our
 defaults or customise to your policy.
 
-**Step 3 — Monitor and Act**
+**Step 3, Monitor and Act**
 Your team sees live scores, overdue inspections, and upcoming deadlines. Export
 reports for audits in one click.
 
@@ -75,8 +75,8 @@ reports for audits in one click.
 
 ## Images and assets
 
-- Fleet Safety dashboard screenshot (hero) — Tom to provide
-- Three line icons for the feature cards — agent to create simple SVGs
+- Fleet Safety dashboard screenshot (hero), Tom to provide
+- Three line icons for the feature cards, agent to create simple SVGs
 
 ## Form
 

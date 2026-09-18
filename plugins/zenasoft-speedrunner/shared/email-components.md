@@ -25,7 +25,7 @@ Four more appear in the snippets and are NOT palette values:
 A `BUTTON_URL` or `PORTAL_URL` left in the file is a failure at intake. A `##FILL##` is
 not; it is a named question for Ops.
 
-Read `email-rules.md` first — especially **the extraction contract**. The Body and
+Read `email-rules.md` first, especially **the extraction contract**. The Body and
 Footer marker comments in the Skeleton are required, not decoration.
 
 ---
@@ -155,7 +155,7 @@ Above the Body marker. The Shell replaces this at install, so keep it simple.
 </tr>
 ```
 
-The accent rule reads `button-bg`, not a separate accent role — that is what the
+The accent rule reads `button-bg`, not a separate accent role, that is what the
 Shell does, so matching it keeps the preview honest.
 
 ---
@@ -248,7 +248,7 @@ measure text, so a wrong width truncates or pads the label.
 
 ## Ghost button
 
-Transparent fill, visible border. No VML — an unfilled `v:roundrect` renders as a
+Transparent fill, visible border. No VML, an unfilled `v:roundrect` renders as a
 hairline box in Outlook, so let Outlook have the square-cornered `<a>`.
 
 ```html
@@ -272,7 +272,7 @@ hairline box in Outlook, so let Outlook have the square-cornered `<a>`.
 </tr>
 ```
 
-When the real image is not available yet, use a solid placeholder — **a table, not a
+When the real image is not available yet, use a solid placeholder, **a table, not a
 flex div**:
 
 ```html
@@ -291,7 +291,7 @@ flex div**:
 </tr>
 ```
 
-Name the image in the handoff note so the admin knows what to wire in.
+Name the image in the handoff note so Marketing Operations knows what to wire in.
 
 ---
 

@@ -25,7 +25,7 @@ below. Copy this block for as many sections as you need.]
 
 **Text:** [The body copy. Write the actual words you want on the page.]
 
-**Buttons:** [Label and action for any buttons, e.g. "Book a Demo — links to
+**Buttons:** [Label and action for any buttons, e.g. "Book a Demo, links to
 meetings page"]
 
 **Image or visual:** [Describe what goes here. If Tom will provide it later,
@@ -41,7 +41,7 @@ whether you have it ready or whether Tom will provide it later.]
 
 ## Form (if applicable)
 
-[If this page has a form: what fields should it collect? e.g. "Contact form —
+[If this page has a form: what fields should it collect? e.g. "Contact form , 
 name, email, company, message". Tom will configure the form in HubSpot.]
 
 [If no form, delete this section.]

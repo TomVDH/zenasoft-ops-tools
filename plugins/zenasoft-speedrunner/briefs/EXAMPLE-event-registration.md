@@ -14,7 +14,7 @@ registrations via the form.
 
 Two-column layout. Left side: event details, speakers, agenda. Right side:
 registration form card (sticky on desktop, stacks below on mobile). Professional
-but not stiff — this is an educational event, not a sales pitch.
+but not stiff, this is an educational event, not a sales pitch.
 
 ## Sections
 
@@ -25,7 +25,7 @@ but not stiff — this is an educational event, not a sales pitch.
 **Headline:** What Hybrid Workplace Data Is Telling Us in 2026
 
 **Supporting text:** Join our panel of workplace strategists for a 45-minute
-look at the booking and occupancy patterns reshaping office planning — and what
+look at the booking and occupancy patterns reshaping office planning, and what
 to do about them before your next lease renewal.
 
 **Details list:**
@@ -49,7 +49,7 @@ Title: Facilities Director, Meridian Group
 Bio: Marcus manages 14 offices across three time zones. He implemented DeskFlex
 in 2024 and will share what changed in his planning process.
 
-**Photos:** Headshots of Laura and Marcus. [Tom to provide — square crop,
+**Photos:** Headshots of Laura and Marcus. [Tom to provide, square crop,
 professional]
 
 ### 3. Agenda
@@ -69,12 +69,12 @@ professional]
 **Supporting text:** We'll send the Zoom link and calendar invite after you
 register. Can't make it live? Register anyway and we'll email the recording.
 
-**Form:** Registration form — fields: first name, last name, work email,
+**Form:** Registration form, fields: first name, last name, work email,
 company, job title
 
 ## Images and assets
 
-- Speaker headshots (square, ~400px) — Tom to provide
+- Speaker headshots (square, ~400px), Tom to provide
 - DeskFlex logo is already in the header (provided by the template)
 
 ## Form

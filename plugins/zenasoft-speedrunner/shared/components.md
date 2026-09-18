@@ -10,8 +10,8 @@ For layouts not listed here, build from the brand's tokens and the container bel
 
 ## Placeholders
 
-Every image, screenshot, or visual the admin will wire in later gets a placeholder.
-The body never contains real images — only labelled slots.
+Every image, screenshot, or visual Marketing Operations will wire in later gets a placeholder.
+The body never contains real images, only labelled slots.
 
 ```css
 .zt-placeholder {
@@ -75,7 +75,7 @@ Every body starts with this. Scopes all styles. Resets margins.
 ## Container
 
 The content rail. Every section wraps its content in this. Uses the brand's own
-tokens — never a literal number, never a fallback value.
+tokens, never a literal number, never a fallback value.
 
 ```css
 .zt-container {
@@ -281,7 +281,7 @@ pages, event registration, or when the page leads with presence over product.
 ## Feature Cards (icon + title + text)
 
 A grid of 2–4 cards, each with an optional SVG icon. No shadows, no background fills
-on the cards — differentiate with the icon and the heading, not with decoration.
+on the cards, differentiate with the icon and the heading, not with decoration.
 
 ```css
 .zt-cards {
@@ -398,7 +398,7 @@ Alternate the image side every other row for visual rhythm.
 
 ## Stats Row
 
-Horizontal metric tiles — big numbers with labels. The copy provides the numbers.
+Horizontal metric tiles, big numbers with labels. The copy provides the numbers.
 Do not invent statistics.
 
 ```css
@@ -478,11 +478,11 @@ Never rely on colour inheritance through `<blockquote>`.
 <div class="zt-quotes">
     <blockquote class="zt-quote">
         <p class="zt-quote__text">"Quote text here."</p>
-        <p class="zt-quote__attr">— Name, Title, Company</p>
+        <p class="zt-quote__attr">Name, Title, Company</p>
     </blockquote>
     <blockquote class="zt-quote">
         <p class="zt-quote__text">"Quote text here."</p>
-        <p class="zt-quote__attr">— Name, Title, Company</p>
+        <p class="zt-quote__attr">Name, Title, Company</p>
     </blockquote>
 </div>
 ```
@@ -621,7 +621,7 @@ A vertical sequence of numbered steps. Use when the product has a clear workflow
 
 ---
 
-## Tracking hooks — four attributes, always
+## Tracking hooks: four attributes, always
 
 Analytics has to recognise a CTA and a form on a page it has never seen. It cannot match
 on button text, because the text is the marketer's copy and you are forbidden from
@@ -648,8 +648,8 @@ would die silently, with no error. Nobody restyling a page touches a `data-*`.
 **Use only these four values.** They are slugs from the intent registry, so each one
 resolves to a campaign code downstream. An invented value resolves to nothing.
 
-If a button or a form is genuinely neither — a case study link, a quote request, a
-newsletter signup, an event registration — leave the hook **off entirely** and say so in
+If a button or a form is genuinely neither, a case study link, a quote request, a
+newsletter signup, an event registration, leave the hook **off entirely** and say so in
 the manifest. A missing attribute reports nothing, which is true. A wrong one reports a
 conversion that never happened, and the number looks plausible enough that nobody checks.
 
@@ -662,9 +662,9 @@ conversion that never happened, and the number looks plausible enough that nobod
 
 Adding a hook to any of these three adds markup for nothing.
 
-## Form and scheduler slot — the wireframe
+## Form and scheduler slot: the wireframe
 
-A form and a booking calendar are both built by the admin in HubSpot, so the body ships a
+A form and a booking calendar are both built by Marketing Operations in HubSpot, so the body ships a
 container and nothing else. **Give that container a visible wireframe.** An empty `<div>`
 has no height, so the marketer opens the file, sees a gap where their form should be, and
 reports the page as broken.
@@ -676,7 +676,7 @@ thing only they can verify.
 <div class="zt-hsform" id="zt-form-{slug}" data-zt-form="demo">
     <div class="zt-slot">
         <p class="zt-slot__label">Demo request form</p>
-        <p class="zt-slot__note">Your admin builds this in HubSpot</p>
+        <p class="zt-slot__note">Marketing Operations builds this in HubSpot</p>
         <div class="zt-slot__field">First name</div>
         <div class="zt-slot__field">Work email</div>
         <div class="zt-slot__field">Company</div>
@@ -694,7 +694,7 @@ For a booking calendar the container changes and the contents do not:
 <div class="zt-scheduler" data-placeholder="scheduler">
     <div class="zt-slot">
         <p class="zt-slot__label">Booking calendar</p>
-        <p class="zt-slot__note">Your admin builds this for {Brand}</p>
+        <p class="zt-slot__note">Marketing Operations builds this for {Brand}</p>
         <div class="zt-slot__field">First name</div>
         <div class="zt-slot__field">Work email</div>
         <div class="zt-slot__field">Company</div>
@@ -748,7 +748,7 @@ nobody mistakes it for a working form:
 
 Every token here is one that all brands define, so the slot renders on any brand. It is
 the only place in the body where you may style something the theme would normally own, and
-only because the admin deletes the whole block at install.
+only because Marketing Operations deletes the whole block at install.
 
 ## Responsive
 

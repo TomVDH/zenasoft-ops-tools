@@ -65,7 +65,7 @@ same rail, re-created after the Shell breaks out to full width, so it uses the s
 tokens in the brand's prefix. **We bring what our engine provides, we do not override it.**
 
 A literal could not be right anyway: the value compiles per brand from
-`theme.spacing.max_content_width`. SPEC-024 states it as PC-INV-01 — "A paste can never
+`theme.spacing.max_content_width`. SPEC-024 states it as PC-INV-01, "A paste can never
 hardcode the rail correctly for any brand."
 
 ## The Shell HTML module
@@ -112,7 +112,7 @@ and attribution injection are added at install time. The body just provides the 
 
 ## Token prefix
 
-Write CSS with the **brand's own prefix** — `--wa-*` for WorkAware, `--jd-*` for Jadian,
+Write CSS with the **brand's own prefix**, `--wa-*` for WorkAware, `--jd-*` for Jadian,
 `--df-*` for DeskFlex. Read the brand's `tokens.css` for the correct prefix, and trust
 the token names in that file over the comment at the top of it.
 

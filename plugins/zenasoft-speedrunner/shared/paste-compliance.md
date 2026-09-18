@@ -7,14 +7,14 @@ not work. P2 rules cause visual problems. P3+ are quality standards.
 
 - **All colours via tokens.** Every colour must be a `var()` reference using the brand's
   own prefix (`--jd-*` for Jadian, `--wa-*` for WorkAware, `--df-*` for DeskFlex). No
-  hex codes (`#ff6600`), no `rgb()`, no colour names. **Never `--zt-*`** — that prefix is
+  hex codes (`#ff6600`), no `rgb()`, no colour names. **Never `--zt-*`**, that prefix is
   for theme development and does not resolve on the portal, because this factory has no
   stamp step. Exception: inside `box-shadow` and `text-shadow`, raw colours are allowed.
 - **No private token names.** Do not invent `--c-blue` or `--my-accent`. Only tokens
   from the brand's `tokens.css`.
 - **Every token must resolve.** If a token is optional (not every brand defines it),
   add a fallback, and end the chain in a role every brand defines:
-  `var(--jd-surface, var(--jd-bg))`. **Never a hex** — see "Fallback chains" below.
+  `var(--jd-surface, var(--jd-bg))`. **Never a hex**, see "Fallback chains" below.
 
 ### Violation examples
 
@@ -46,7 +46,7 @@ Right:
 }
 ```
 
-Exception — raw colours allowed inside shadow functions only:
+Exception, raw colours allowed inside shadow functions only:
 ```css
 .zt-formcard {
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);  /* OK */
@@ -129,7 +129,7 @@ Pair a ground with its own ink. If you fall back to `footer-bg`, fall back to
 
 **Container uses the brand's rail tokens**
 
-Wrong — a literal:
+Wrong, a literal:
 ```css
 .zt-container {
     max-width: 1100px;
@@ -137,7 +137,7 @@ Wrong — a literal:
 }
 ```
 
-Also wrong — a token carrying a fallback. The fallback is a number the theme never gave
+Also wrong, a token carrying a fallback. The fallback is a number the theme never gave
 you, and it silently wins whenever the token is missing:
 ```css
 .zt-container {
@@ -164,13 +164,13 @@ never hardcode the rail correctly for any brand."
 
 **One container class**
 
-Wrong — two containers with different widths:
+Wrong, two containers with different widths:
 ```css
 .zt-container { max-width: var(--{p}-max-width); margin: 0 auto; }
 .zt-narrow { max-width: 800px; margin: 0 auto; padding-inline: 24px; }
 ```
 
-Right — constrain inner content, not the rail:
+Right, constrain inner content, not the rail:
 ```css
 .zt-container { width: 100%; max-width: var(--{p}-max-width); margin: 0 auto; padding-inline: var(--{p}-section-pad-h); }
 .zt-section__head { max-width: 40em; }
@@ -218,7 +218,7 @@ Wrong:
 Right:
 ```html
 <div class="zt-lp">
-    <!-- content only — no header, nav, or footer -->
+    <!-- content only, no header, nav, or footer -->
 </div>
 ```
 

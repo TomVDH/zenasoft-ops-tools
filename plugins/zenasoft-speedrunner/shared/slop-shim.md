@@ -1,7 +1,7 @@
-# Front-end visual slop — markers & tells
+# Front-end visual slop: markers & tells
 
 For landing pages and wireframes. **Visual only.** Nothing here about links, alt text,
-console logs or placeholder copy — an in-build page has dead links and grey boxes by
+console logs or placeholder copy, an in-build page has dead links and grey boxes by
 design, that is not slop.
 
 Severity: 🔴 near-certain tell · 🟠 context-dependent · 🟡 fine alone, damning in a pile
