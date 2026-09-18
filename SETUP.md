@@ -13,6 +13,35 @@ claude plugin install zenasoft-speedrunner@zena-claude-plugins
 
 Restart Claude Code. Type `/speedrun-help`. The guide opens. Done.
 
+## Python
+
+Required. `/speedrun-wrap` calls `scripts/wrap.py` to build the preview, `PLACEHOLDERS.md`, `FONTS.md` and the zip.
+Without it the marketer gets a hand-assembled folder and no zip.
+
+Install from [python.org/downloads](https://www.python.org/downloads/). On Windows, tick **Add python.exe to PATH**
+on the first installer screen. Verify in a fresh terminal:
+
+```
+python3 -V
+```
+
+A version must print. If `python3` is not found but `py -V` works, that build did not register the `python3` name.
+The skills call `python3`, so flag it to Tom rather than working around it on the machine.
+
+## Figma
+
+Optional, and capped by seat. Only needed if the marketer will paste Figma links instead of screenshots.
+
+```
+claude mcp add --transport http figmaclaude https://mcp.figma.com/mcp
+```
+
+Then `/mcp` inside Claude Code, select `figmaclaude`, sign in through the browser.
+
+Seat quotas on our Professional plan: **View or Collab get six tool calls per month. Dev or Full get 200 per day.**
+One page build spends several calls, so a View seat covers roughly one page a month. Check the marketer's seat
+before you promise this. The fallback needs no connection: a screenshot of the frame reads just as well for layout.
+
 ## Update
 
 ```
