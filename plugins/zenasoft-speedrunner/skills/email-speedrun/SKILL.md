@@ -291,13 +291,50 @@ Then ask what the booking collects anyway, and put it in the manifest, because t
 building that page needs the field list.
 ## Where to save
 
-`output/{brand}-{slug}-email.html` for the email, and
-`output/{brand}-{slug}-email-manifest.md` for the admin's instruction sheet.
+One folder per run, written on the first build and rewritten after every change:
 
-## The manifest (for the admin)
+| | |
+|---|---|
+| `output/{brand}-{slug}/{brand}-{slug}-email.html` | the email; the marketer reviews this file, and Marketing Operations installs it |
+| `output/{brand}-{slug}/assets/` | every image the marketer gave you, under its own name |
+| `output/{brand}-{slug}/assets/PLACEHOLDERS.md` | one row per empty image slot: slug, position, what goes there, suggested size |
+| `output/{brand}-{slug}/fonts/FONTS.md` | the font link the email carries, one line per family |
+| `output/{brand}-{slug}/MANIFEST.md` | the instruction sheet for Marketing Operations |
+| `output/{brand}-{slug}/README.md` | three lines for the marketer, below |
 
-After building the email, write `output/{brand}-{slug}-email-manifest.md`. This is the
-admin's instruction sheet. The marketer does not read it.
+For example `output/workaware-fleet-update/workaware-fleet-update-email.html`.
+
+An email needs no preview file. It carries inline styles and its own font link, so it
+renders in a browser as it is.
+
+README.md, always these three lines:
+
+```markdown
+1. Open `{brand}-{slug}-email.html` in your browser to review the email.
+2. When it is right, send the whole zip to Marketing Operations.
+3. Do not edit the email file. Marketing Operations installs it as it is.
+```
+
+The manifest is not optional. It carries the subject line, the automation flow, the values
+still open and who holds each one, none of which survives in the HTML.
+
+After you write the body (or the email) and `MANIFEST.md`, run the packager once so the
+review files exist. The plugin folder is the one that holds `skills/`, `shared/`,
+`brands/` and `scripts/`; Claude Code exposes it as `${CLAUDE_PLUGIN_ROOT}`:
+
+```
+python3 "${CLAUDE_PLUGIN_ROOT}/scripts/wrap.py" output/{brand}-{slug} --no-zip
+```
+
+It writes the preview, `assets/PLACEHOLDERS.md`, `fonts/FONTS.md` and `README.md` from
+the body and the brand's `tokens.css`. Run it again after every change. If `python3` is
+not available, write those files by hand from the descriptions above and
+`shared/preview-shell.md`.
+
+## The manifest (for Marketing Operations)
+
+After building the email, write `output/{brand}-{slug}/MANIFEST.md`. This is the
+instruction sheet for Marketing Operations. The marketer does not read it.
 
 An email manifest carries more than a page manifest, because three things cannot be
 recovered from the HTML: which fills are still open, what the automation is supposed to
@@ -374,21 +411,51 @@ No contact data is in this package.
 
 Leave a table out when it is empty. Do not write "N/A" rows.
 
+## Deliver
+
+Deliver when the marketer says they are done, asks for the files, asks for the zip, or
+types `/speedrun-wrap`. Never before they have opened the email and confirmed it. If
+they ask for the zip first, say: "Open the email in your browser and check it against
+your brief first. Say done and I zip it."
+
+1. Run the packager. It rebuilds the review files, refuses without `MANIFEST.md`, zips
+   with no `zip` binary needed, and prints the zip path:
+   `python3 "${CLAUDE_PLUGIN_ROOT}/scripts/wrap.py" output/{brand}-{slug}`
+   Done: go to step 3. Only if `python3` is not available, continue with step 2.
+2. By hand: check that every file in the table above exists in `output/{brand}-{slug}/`,
+   then from the `output/` folder zip the run folder:
+   `zip -r {brand}-{slug}.zip {brand}-{slug}`
+   If `zip` is not found: `python3 -m zipfile -c {brand}-{slug}.zip {brand}-{slug}`
+   If neither runs (Windows PowerShell): `Compress-Archive -Path {brand}-{slug} -DestinationPath {brand}-{slug}.zip`
+3. Print the zip path as the last line of your message, on its own line:
+   `output/{brand}-{slug}.zip`
+
+**If you cannot write files or run a command** (claude.ai chat, the Chat tab in Claude
+Desktop), say once:
+
+> This chat cannot save files or make a zip. Claude Code and Cowork can. I can show you
+> each file here to copy.
+
+Then give the files one at a time, the email first, each in its own code block with its
+filename above it.
+
 ## What to tell the marketer when done
 
-> Your email is ready. Two files are in `output/`:
+After the first build, and after every change:
+
+> Your email is built. Open `output/{brand}-{slug}/{brand}-{slug}-email.html` in your
+> browser and check it against your brief. Is the copy right? Does it read well on a
+> narrow window? Anything that looks AI-generated?
 >
-> | File | Who it is for |
-> |---|---|
-> | `{brand}-{slug}-email.html` | Your admin, and you: open this one in your browser |
-> | `{brand}-{slug}-email-manifest.md` | Your admin. You do not need to read it. |
+> Tell me what to change and I fix it. When it is right, say **done** and I make the zip.
+
+After the zip:
+
+> Your zip is ready: `output/{brand}-{slug}.zip`
 >
-> **Open the HTML in your browser and check it against your brief.** Is the copy right?
-> Does it read well on a narrow window? Anything that looks AI-generated?
->
-> When you are happy, **send the whole `output/` folder to your HubSpot admin** and tell
-> them: "Here is a new email for {Brand}. The manifest has the install steps, the
-> automation flow, and the values still needed from us."
+> Send the whole zip to Marketing Operations with this note: "Here is a new email for
+> {Brand}. MANIFEST.md inside has the install steps, the automation flow, and the values
+> still needed from us."
 >
 > These are still open and someone on your side has to supply them:
 > {list every `##NAME##` used, with who is likely to have it}

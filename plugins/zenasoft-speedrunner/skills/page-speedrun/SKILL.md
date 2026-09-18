@@ -17,6 +17,7 @@ Before doing anything else, read these files from the plugin directory:
 2. **`shared/shell-rules.md`** — technical constraints for the Page Shell.
 3. **`shared/paste-compliance.md`** — compliance rules the output must pass.
 4. **`shared/slop-shim.md`** — anti-AI visual checklist. Avoid every tell.
+5. **`shared/preview-shell.md`** — how to build the preview file the marketer reviews.
 
 Then follow the instructions below exactly. Every rule is a hard constraint.
 
@@ -398,116 +399,157 @@ confirm with Ops/director before creating the page."
 
 ## Where to save
 
-Write the finished HTML to `output/{brand}-{slug}-body.html`.
-Save any provided images to `output/assets/`.
-Write a manifest to `output/{brand}-{slug}-manifest.md`.
+One folder per run, written on the first build and rewritten after every change:
 
-## The manifest (for the admin)
+| | |
+|---|---|
+| `output/{brand}-{slug}/{brand}-{slug}-body.html` | the page, the file Marketing Operations installs |
+| `output/{brand}-{slug}/{brand}-{slug}-preview.html` | the same body wrapped in the brand's tokens and fonts, built from `shared/preview-shell.md`; the file the marketer reviews |
+| `output/{brand}-{slug}/assets/` | every image the marketer gave you, under its own name |
+| `output/{brand}-{slug}/assets/PLACEHOLDERS.md` | one row per empty image slot: slug, section, what goes there, suggested size |
+| `output/{brand}-{slug}/fonts/FONTS.md` | the Google Fonts link the preview uses, one line per family, and a note for any family that is not on Google Fonts |
+| `output/{brand}-{slug}/MANIFEST.md` | the instruction sheet for Marketing Operations |
+| `output/{brand}-{slug}/README.md` | three lines for the marketer, below |
 
-After building the page, write a manifest file. This is the admin's instruction
-sheet — everything they need to install the page, in order, with no ambiguity.
+For example `output/jadian-smart-scheduling/jadian-smart-scheduling-body.html`.
+
+README.md, always these three lines:
 
 ```markdown
-# {Brand} — {Page Name}
+1. Open `{brand}-{slug}-preview.html` in your browser to review the page.
+2. When it is right, send the whole zip to Marketing Operations.
+3. Do not edit `{brand}-{slug}-body.html`. Marketing Operations installs that file as it is.
+```
+
+The manifest is not optional. It carries the form's field list, where each image goes, the
+tracking hooks, the page URL and anything still open, none of which the HTML can say.
+Without it Marketing Operations has a file and no instructions.
+
+After you write the body (or the email) and `MANIFEST.md`, run the packager once so the
+review files exist. The plugin folder is the one that holds `skills/`, `shared/`,
+`brands/` and `scripts/`; Claude Code exposes it as `${CLAUDE_PLUGIN_ROOT}`:
+
+```
+python3 "${CLAUDE_PLUGIN_ROOT}/scripts/wrap.py" output/{brand}-{slug} --no-zip
+```
+
+It writes the preview, `assets/PLACEHOLDERS.md`, `fonts/FONTS.md` and `README.md` from
+the body and the brand's `tokens.css`. Run it again after every change. If `python3` is
+not available, write those files by hand from the descriptions above and
+`shared/preview-shell.md`.
+
+## The manifest (for Marketing Operations)
+
+`MANIFEST.md` is written for Marketing Operations, not the marketer. Adapt the template
+to what the page has; leave a table out when it is empty. Every row is specific: real
+filenames, real field names, real paths.
+
+```markdown
+# {Brand}: {Page Name}
 
 ## Page URL
-`{url-path}` (or: URL TBD — confirm with Ops/director before creating the page)
+`{url-path}` (or: URL TBD, confirm with Marketing Operations before creating the page)
 
 ## Files in this package
-| File | What the admin does with it |
+| File | What Marketing Operations does with it |
 |---|---|
 | `{brand}-{slug}-body.html` | Paste into the `_shell-html` module |
-| `assets/hero-dashboard.png` | Upload to File Manager → `/__self-hosted__/{slug}/` |
-| `assets/speaker-headshot.jpg` | Upload to File Manager → `/__self-hosted__/{slug}/` |
+| `{brand}-{slug}-preview.html` | Review copy only. Never installed. |
+| `assets/hero-dashboard.png` | Upload to File Manager, `/__self-hosted__/{slug}/` |
 
 ## Images provided
 | Filename | Section | Alt text | Size |
 |---|---|---|---|
-| `hero-dashboard.png` | Hero, right column | Fleet Safety dashboard | 1200×800 |
-| `speaker-headshot.jpg` | Speaker card | Rachel Torres | 400×400 |
+| `hero-dashboard.png` | Hero, right column | Fleet Safety dashboard | 1200x800 |
 
-After uploading, update the `src` in the HTML from `assets/hero-dashboard.png`
-to the File Manager URL (e.g. `https://yourportal.com/__self-hosted__/{slug}/hero-dashboard.png`).
+After uploading, change each `src` from `assets/…` to the File Manager URL.
 
-## Images still needed (placeholders in the HTML)
-| Placeholder | Description | Suggested size |
-|---|---|---|
-| `hero-image` | Product screenshot showing the main dashboard | ~1200×675 (16:9) |
-
-These appear as dashed boxes in the page. Replace each `<div data-placeholder="...">` with
-an `<img>` tag pointing at the uploaded file.
+## Images still needed
+See `assets/PLACEHOLDERS.md`. Each appears in the page as a dashed box with its slug.
 
 ## Form
-| Field | Required? |
+| | |
 |---|---|
-| Form name | `{Brand} — {Page Name} Demo Request` |
-| Form intent | `demo` / `contact` — set this on the HubSpot form too. Neither? Use the `## Form intent — NOT SET` block instead |
-| HubSpot form GUID | filled by the admin after creating the form |
-| First name | Yes |
-| Last name | Yes |
-| Work email | Yes |
-| Company | Yes |
-| Job title | Yes |
-
-Create this form in HubSpot, then embed it in the `<div class="zt-hsform">` container
-in the HTML.
+| Target element | `<div class="zt-hsform" data-zt-form="demo">` in the {section} section |
+| Form name | `{Brand}: {Page Name} Demo Request` |
+| Form intent | `demo` / `contact` / NOT SET, with the reason |
+| Fields | {the list the marketer gave, with required yes/no} |
 
 ## Booking calendar
 | | |
 |---|---|
 | Placeholder | `zt-scheduler`, or "none" |
-| Fields it must collect | {the list the marketer gave you} |
+| Fields it must collect | {the list the marketer gave} |
 | Booking link in the copy | `meetings.hubspot.com/{slug}` on the "{button text}" button, or "none" |
-| Whose calendar | {name or team from the brief, or "not stated"} |
-| Timezone named in the brief | {timezone, or "not stated"} |
 
-Check the slug exists on the portal before install. A dead or placeholder slug books
-nobody.
+## Tracking hooks
+| Element | Attribute | Value |
+|---|---|---|
+| "{button text}" button in the hero | `data-zt-cta` | `demo` |
+| form container | `data-zt-form` | `demo` |
+Or: "none set", and the reason (the form is a newsletter signup, so neither registry value applies).
 
-## Installation steps
-1. Create a new page using the **{Brand}** `zt-oneoff` template — **on staging first**
-2. Set the page URL to `{url-path}`
-3. Upload all images from `assets/` to File Manager at `/__self-hosted__/{slug}/`
-4. Update image `src` paths in the HTML to the File Manager URLs
-5. Paste the HTML file contents into the `_shell-html` module
-6. Create the form (see table above) and embed it
-7. Preview on staging — check every section against the brief
-8. When approved, promote to production
+## Install checklist
+- [ ] Create the page on the {Brand} `zt-oneoff` template, on staging first
+- [ ] Set the page URL to `{url-path}`
+- [ ] Upload `assets/` to File Manager at `/__self-hosted__/{slug}/` and update each `src`
+- [ ] Paste `{brand}-{slug}-body.html` into the `_shell-html` module
+- [ ] Create the form and embed it in the `zt-hsform` container
+- [ ] Build the scheduler widget, if the page has one
+- [ ] Run `paste-scan.py --brand {brand}` on the body
+- [ ] Preview on staging against the brief, then promote to production
 ```
 
-Adapt the template to match what the page actually has. Omit sections that don't apply.
-Every row must be specific — real filenames, real field names, real paths. No generics.
+## Deliver
+
+Deliver when the marketer says they are done, asks for the files, asks for the zip, or
+types `/speedrun-wrap`. Never before they have opened the preview and confirmed it. If
+they ask for the zip first, say: "Open the preview and check it against your brief
+first. Say done and I zip it."
+
+1. Run the packager. It rebuilds the review files, refuses without `MANIFEST.md`, zips
+   with no `zip` binary needed, and prints the zip path:
+   `python3 "${CLAUDE_PLUGIN_ROOT}/scripts/wrap.py" output/{brand}-{slug}`
+   Done: go to step 3. Only if `python3` is not available, continue with step 2.
+2. By hand: check that every file in the table above exists in `output/{brand}-{slug}/`,
+   then from the `output/` folder zip the run folder:
+   `zip -r {brand}-{slug}.zip {brand}-{slug}`
+   If `zip` is not found: `python3 -m zipfile -c {brand}-{slug}.zip {brand}-{slug}`
+   If neither runs (Windows PowerShell): `Compress-Archive -Path {brand}-{slug} -DestinationPath {brand}-{slug}.zip`
+3. Print the zip path as the last line of your message, on its own line:
+   `output/{brand}-{slug}.zip`
+
+**If you cannot write files or run a command** (claude.ai chat, the Chat tab in Claude
+Desktop), say once:
+
+> This chat cannot save files or make a zip. Claude Code and Cowork can. I can show you
+> each file here to copy.
+
+Then give the files one at a time, the body first, each in its own code block with its
+filename above it.
 
 ## What to tell the marketer when done
 
-Deliver in two parts: what the marketer does, then what they hand off.
+After the first build, and after every change:
 
-**Part 1 — for the marketer (say this directly):**
-
-> Your page is built. Here is what to do next:
+> Your page is built. Open `output/{brand}-{slug}/{brand}-{slug}-preview.html` in your
+> browser and check every section against your brief. Is every word right? Does the
+> layout match? Anything that looks AI-generated?
 >
-> 1. **Open the HTML file in your browser** and check every section. Does the
->    layout match what you described? Is every word correct?
-> 2. **If anything is wrong**, tell me what to change — I'll fix it right now.
-> 3. **When you're happy**, send the entire `output/` folder to your HubSpot
->    admin. Everything they need is inside, including a step-by-step guide.
+> Tell me what to change and I fix it. When it is right, say **done** and I make the zip.
+
+After the zip:
+
+> Your zip is ready: `output/{brand}-{slug}.zip`
 >
-> You do not need to open or read the manifest file — that is for your admin.
-> You do not paste anything into HubSpot yourself.
-
-**Part 2 — the folder they send:**
-
-> **What's in the folder:**
-> - `{filename}.html` — your page
-> - `{filename}-manifest.md` — step-by-step instructions for your admin
-> - `assets/` — your images (if you provided any)
+> Send the whole zip to Marketing Operations with this note: "Here is a new landing page
+> for {Brand}. MANIFEST.md inside has everything: the form, the images, the URL. Please
+> install on staging first."
 >
-> **Tell your admin:** "Here is a new landing page for {Brand}. The manifest
-> has everything — where to upload the images, what form to create, and the
-> URL. Please install on staging first."
+> One page per session. If you need changes later, start a new session.
 
-Do not tell the marketer to paste anything themselves. Do not name any individual.
-Do not output debugging notes, file audits, or technical observations.
+Do not tell the marketer to paste anything into HubSpot themselves. Do not tell them to
+open the manifest.
 
 ## Self-check before delivery
 

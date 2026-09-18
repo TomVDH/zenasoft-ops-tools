@@ -48,9 +48,9 @@ claude plugin update zenasoft-speedrunner@zena-claude-plugins
 
 **Hand over your material.** Paste your copy into the chat, or type where the file is on your computer. Paste a Figma link as a link.
 
-**Get the result.** Speedrunner saves an HTML file in a folder named `output` inside your work folder and tells you the file name. Open the file in your browser. Each round of changes updates the same file.
+**Get the result.** Speedrunner saves your page in a folder inside `output` in your work folder and tells you the file name. Open the preview file in your browser. Each round of changes updates the same file.
 
-**Send it.** Send the whole `output` folder to Marketing Operations. It holds the page, any images, and a note for them.
+**Send it.** Say done, or type `/speedrun-wrap`. Speedrunner makes one zip file and tells you where it is. Send that zip to Marketing Operations. It holds the page, any images, and a note for them.
 
 **How long.** First build: about five minutes. Each change: one to two minutes. Install by Marketing Operations: up to one working day. Plan for that day.
 
@@ -65,6 +65,7 @@ Type one of these into the chat. Speedrunner does the rest.
 |---|---|
 | `/page-speedrun` | A landing page in your brand: a feature launch, an event sign-up, a product overview, a lead-capture page. |
 | `/email-speedrun` | A short branded email with one purpose: a webinar reminder, a feature announcement, an appointment confirmation. |
+| `/speedrun-wrap` | One zip file of your finished page or email, ready to send to Marketing Operations. |
 | `/speedrun-help` | This guide, inside the chat. |
 
 > **Not for newsletters**
@@ -93,7 +94,7 @@ Bring all six and the first build is close. Bring less and Speedrunner asks, one
 3. It builds the page in your brand's colours, fonts and spacing.
 4. Open the file it names in your browser. Check every word and every block against your brief.
 5. Ask for changes in plain words: "move the form above the feature blocks". As many rounds as you need.
-6. Send the `output` folder to Marketing Operations. They install it and send you the live link.
+6. Say done, or type `/speedrun-wrap`. Send the zip it makes to Marketing Operations. They install it and send you the live link.
 
 > **Be specific**
 > "A big headline with a background image, three feature blocks, and a sign-up form" beats "make me a landing page". Say what goes on the page and in what order. Speedrunner builds what you describe and adds nothing.
@@ -124,4 +125,4 @@ Bring all six and the first build is close. Bring less and Speedrunner asks, one
 
 Do not paste or upload contact lists, spreadsheets, or any file with names and email addresses into this chat. Personal data never enters an AI tool. Send data files to Marketing Operations over Teams or email only.
 
-*ZenaSoft Speedrunner v1.1.18 · Internal use only*
+*ZenaSoft Speedrunner v1.1.19 · Internal use only*
