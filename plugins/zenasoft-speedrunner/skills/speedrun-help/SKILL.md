@@ -37,6 +37,28 @@ claude plugin install zenasoft-speedrunner@zena-claude-plugins
 
 Then close and reopen Claude Code. No account is needed. Claude Code is not on your computer yet, or a line fails? Ask Marketing Operations; they set it up with you in ten minutes.
 
+**Install Python, once.** Speedrunner uses Python to pack your finished page into one zip file. Without it `/speedrun-wrap` cannot make the zip. Go to [python.org/downloads](https://www.python.org/downloads/). Click the yellow **Download Python** button and open the file you downloaded. On Windows, tick **Add python.exe to PATH** on the first screen of the installer before you click Install Now; that tick box is the step people miss. On Mac, click through the installer; nothing to tick. Then check it in a terminal:
+
+```
+python3 -V
+```
+
+A version number prints, for example `Python 3.14.6`. That is your proof. An error instead? Close the terminal, open a new one, and try once more. Still an error? Ask Marketing Operations.
+
+**Connect Figma, once.** Speedrunner takes the layout of your page from a Figma link. This connection is what lets it open the link. In a terminal, type this line and press Enter:
+
+```
+claude mcp add --transport http figmaclaude https://mcp.figma.com/mcp
+```
+
+Then type `claude` and press Enter. Type `/mcp` and press Enter. Reach **figmaclaude** with the arrow keys, press Enter, and choose to sign in. A browser window opens. Sign in to Figma and click **Allow**. Close the browser and go back to the terminal. **figmaclaude** now reads connected.
+
+> **Your Figma seat sets your limit**
+> Figma counts every read Speedrunner makes. A **View** seat allows **six reads a month**, which is about one page. A **Dev** or **Full** seat allows 200 a day. Ask Marketing Operations which seat you hold before you plan a month of pages on this.
+
+> **No Figma, or out of reads**
+> Take a screenshot of your Figma frame and paste that into the chat instead. Speedrunner reads a screenshot just as well for layout. Your colours and fonts always come from your brand, never from the design file.
+
 **Update.** When Marketing Operations says a new version is out, type these two lines, then close and reopen Claude Code:
 
 ```
@@ -46,7 +68,7 @@ claude plugin update zenasoft-speedrunner@zena-claude-plugins
 
 **Open it.** In a terminal, go to your work folder: type `cd`, a space, and the folder path, then press Enter. Then type `claude` and press Enter. In the Claude Desktop app, pick your work folder when it asks where to work. Then type one of the three commands in the next section.
 
-**Hand over your material.** Paste your copy into the chat, or type where the file is on your computer. Paste a Figma link as a link.
+**Hand over your material.** Paste your copy into the chat, or type where the file is on your computer. Paste a Figma link as a link, or a screenshot of the frame if you have no Figma connection or are out of reads.
 
 **Get the result.** Speedrunner saves your page in a folder inside `output` in your work folder and tells you the file name. Open the preview file in your browser. Each round of changes updates the same file.
 
