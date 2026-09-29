@@ -64,6 +64,7 @@ Type one of these into the chat. Speedrunner does the rest.
 | Command | What you get |
 |---|---|
 | `/page-speedrun` | A landing page in your brand: a feature launch, an event sign-up, a product overview, a lead-capture page. |
+| `/page-speedrun fast` | The same page, built straight away from your brand and copy. Anything else it needs comes after the first build, in one list you answer in one message. What you leave open goes to Marketing Operations in their note. |
 | `/email-speedrun` | A short branded email with one purpose: a webinar reminder, a feature announcement, an appointment confirmation. |
 | `/speedrun-wrap` | One zip file of your finished page or email, ready to send to Marketing Operations. |
 | `/speedrun-help` | This guide, inside the chat. |
@@ -73,7 +74,7 @@ Type one of these into the chat. Speedrunner does the rest.
 
 ## What to bring
 
-Bring all six and the first build is close. Bring less and Speedrunner asks, one question at a time.
+Bring all six and the first build is close. Bring less and Speedrunner asks, one question at a time. In a hurry? Brand and copy are enough for `/page-speedrun fast`.
 
 | Item | What it is |
 |---|---|
@@ -90,7 +91,7 @@ Bring all six and the first build is close. Bring less and Speedrunner asks, one
 ## The process
 
 1. Open Claude Code in your work folder and type `/page-speedrun` or `/email-speedrun`.
-2. Speedrunner checks your brief. Complete: it builds at once. Incomplete: it asks one question at a time, with options to pick.
+2. Speedrunner checks your brief. Complete: it builds at once. Incomplete: it asks one question at a time, with options to pick. For a page, say **fast** instead and it builds with what you have, then asks.
 3. It builds the page in your brand's colours, fonts and spacing.
 4. Open the file it names in your browser. Check every word and every block against your brief.
 5. Ask for changes in plain words: "move the form above the feature blocks". As many rounds as you need.
@@ -125,4 +126,4 @@ Bring all six and the first build is close. Bring less and Speedrunner asks, one
 
 Do not paste or upload contact lists, spreadsheets, or any file with names and email addresses into this chat. Personal data never enters an AI tool. Send data files to Marketing Operations over Teams or email only.
 
-*ZenaSoft Speedrunner v1.1.20 · Internal use only*
+*ZenaSoft Speedrunner v1.1.21 · Internal use only*

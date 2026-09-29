@@ -1,6 +1,7 @@
 ---
 name: page-speedrun
 description: Build a branded landing page from a brief. Use when a marketer needs a landing page for any of our brands, feature launches, event registration, product overviews, lead capture. Reads brand tokens, applies proven components, enforces copy-is-sacred and paste-compliance rules.
+argument-hint: "[fast]"
 user-invocable: true
 ---
 
@@ -100,7 +101,9 @@ present copy options. You are a page builder, not a creative director.
 ## Getting started: completeness check
 
 Before asking any questions, check what the marketer has already provided. Scan their
-message, any attachments, and the `briefs/` folder. You need four things to build:
+message, any attachments, and the `briefs/` folder in their work folder, if there is one.
+The plugin's own `briefs/` holds only a template and two examples: never build from those.
+You need four things to build:
 
 1. **Brand**, which brand is this for?
 2. **Purpose**, what the page should do (one sentence is enough)
@@ -108,7 +111,8 @@ message, any attachments, and the `briefs/` folder. You need four things to buil
 4. **Layout direction**, a description, screenshot, sketch, or Figma link
 
 **If all four are present, start building. Do not ask questions you already have
-answers to.**
+answers to.** That holds for every later question too: the form, the booking calendar
+and the page URL are each asked only when the brief does not already answer them.
 
 If something is missing, ask ONE question per message. Never send a wall of questions.
 For each question:
@@ -116,6 +120,11 @@ For each question:
 - Offer 2–3 concrete options with a one-line explanation of what each means
 - Put your recommendation first and say why
 - Bold the options so they are easy to scan
+
+**When two or more things are missing, offer the fast lane.** End your first question
+with this line, once per run:
+
+> Or say **fast** and I build now from what you have, then list what is still open.
 
 **If the marketer arrives with nothing**, no brief, no copy, no design, walk them
 through what you need, one question at a time. Start with brand, then purpose, then
@@ -149,6 +158,59 @@ Authority, highest first:
 
 Never resolve a contradiction by inventing a third answer.
 
+## Fast lane
+
+For a marketer who wants the page first and the questions later. Same rules, same
+contract, same files. The one difference is **when** things get settled: after the first
+build, in one reply, instead of one question at a time before it.
+
+**It switches on** when the marketer types `/page-speedrun fast`, says "fast", "fast
+track", "skip the questions" or "just build it" at any point, or answers **fast** to the
+offer above. It stays on for the rest of the run.
+
+**It still needs the brand, and something to lay out.** Check the brand first, as in any
+run: a brand that is not available gets the usual line, and the run stops there. Then
+build from the copy. No copy yet, but a layout description: build that with
+`[LOREM IPSUM, … needed]` slots, as in any run. No brand, or neither copy nor layout:
+ask for what is missing, in one message:
+
+> Fast lane: send me the brand and your copy, and I build straight away.
+
+**Everything else takes a default. Ask nothing else before the first build.**
+
+| not in the brief | fast-lane default |
+|---|---|
+| Purpose | read it from the copy |
+| Layout | the copy's own order, top to bottom, each block built from the closest pattern in `shared/components.md` |
+| Form fields | the form container, with one wireframe row reading "Fields to confirm" |
+| Form hook | the brief says demo request: `demo`. Contact or enquiry: `contact`. Anything else, or not said: **off**, with the NOT SET block in the manifest |
+| Booking calendar fields | the placeholder, with one wireframe row reading "Fields to confirm" |
+| Page URL | `URL TBD` |
+| Images | a labelled placeholder for each image the copy or brief mentions; none mentioned, none added |
+
+**A default never touches the contract.** A tracking hook comes only from the marketer's
+own words. Never set `demo` or `contact` because the page looks like one: leave it off.
+Never invent a field list either; "Fields to confirm" is the honest wireframe.
+
+**What the fast lane does not skip:** the copy rules, the slop flag (one line in the
+build message, not a separate stop), the self-check, the manifest, and the review before
+the zip.
+
+### After the first build
+
+Add the open items to the build message, one line each, and only the ones that took a
+default:
+
+> Built on the fast lane. Answer any of these in one reply, or leave them: Marketing
+> Operations sees whatever is still open in their note.
+>
+> - **Form:** which fields should it collect, and is it a demo request, a contact form, or something else?
+> - **Page URL:** TBD. Tell me the path if your team has one.
+
+Fold each answer in however it arrives, rebuild, and drop that line from the list. Never
+ask again about a line the marketer skipped. Whatever is still open at the zip goes into
+the manifest's `## Still open` block.
+
 ## Reading the brand
 
 The `brands/` folder contains one subfolder per brand. Ask the marketer which brand
@@ -165,7 +227,7 @@ and modes this brand's theme defines. Use only what is listed.
 ## Forms
 
 If the page has a form, the marketer decides what fields it collects, not you, not
-Marketing Operations. Ask the marketer:
+Marketing Operations. Unless the brief already says it, ask the marketer:
 
 > **What fields should the form collect?**
 >
@@ -175,10 +237,14 @@ Marketing Operations. Ask the marketer:
 >
 > **C. Custom**, tell me the fields you want
 
-Place the form container in the HTML:
-Use the **Form and scheduler slot** pattern in `shared/components.md`: the container
-plus a greyed wireframe of the fields the marketer named. An empty `<div>` has no
-height, so the marketer sees a gap and reports the page as broken.
+A brief that says what the form is for, and lists its fields, has answered this: "demo
+request" is A, "contact" or "enquiry" is B, anything else (a registration, a download, a
+quote) is C. Do not ask. A list of fields alone does not answer it: "name, email,
+company" fits either A or B, so ask. On the fast lane, do not ask; see its table.
+
+Place the form with the **Form and scheduler slot** pattern in `shared/components.md`:
+the container plus a greyed wireframe of the fields the marketer named. An empty `<div>`
+has no height, so the marketer sees a gap and reports the page as broken.
 
 Marketing Operations configures the actual form in HubSpot after receiving the file. The body just
 provides the target element.
@@ -220,8 +286,13 @@ If the brief mentions a scheduler, a booking calendar, availability, "book a mee
 
 ```html
 <!-- [PLACEHOLDER: scheduler] Booking calendar. Fields: {the list the marketer gave you} -->
-<div class="zt-scheduler" data-placeholder="scheduler"></div>
+<div class="zt-scheduler" data-placeholder="scheduler">
+    {the wireframe from the Form and scheduler slot pattern in shared/components.md}
+</div>
 ```
+
+The container is never left empty: an empty `<div>` has no height, and the marketer
+reports a gap.
 
 **Never embed a scheduler. Never add a `<script>`.** Do not swap the placeholder for a
 "Book a meeting" link on your own: a link leaves the page and the booking is lost.
@@ -239,8 +310,9 @@ person. Nothing you write can stand in for that.
 
 ### You still have to ask what it collects
 
-A scheduler captures a form. So ask the same question you would ask about a form, and put
-the answer in the manifest:
+A scheduler captures a form. So ask the same question you would ask about a form, unless
+the brief already lists the booking fields, and put the answer in the manifest. On the
+fast lane, do not ask; see its table.
 
 > **What should the booking form collect?**
 >
@@ -280,14 +352,15 @@ The marketer may provide image files (product screenshots, headshots, logos). Wh
 do, handle them as follows:
 
 **If the marketer provides an image file:**
-1. Save it to `output/assets/` with a descriptive filename (e.g. `hero-dashboard.png`,
-   `speaker-headshot.jpg`). Keep the original file format, do not convert.
+1. Save it to `output/{brand}-{slug}/assets/` with a descriptive filename (e.g.
+   `hero-dashboard.png`, `speaker-headshot.jpg`). Keep the original file format, do not
+   convert. Anywhere else and it is left out of the zip.
 2. Reference it in the HTML with a relative path:
    ```html
    <img src="assets/hero-dashboard.png" alt="Fleet Safety dashboard showing driver scores">
    ```
 3. Always set `alt`, `width`, and `height` attributes on the `<img>`.
-4. The image must also appear in the handoff manifest (see "What to tell the marketer").
+4. The image must also appear in the manifest (see "The manifest (for Marketing Operations)").
 
 **If the marketer describes an image but does not provide a file:**
 Use the placeholder pattern from `shared/components.md`:
@@ -313,9 +386,8 @@ Not every brand is in the Page Factory yet. Two cases, one answer.
 **Its `tokens.css` header says `SPEEDRUNNER STATUS: pending`.** Look for that line, and
 for the `*** ... IS NOT AVAILABLE ... ***` banner above it. Nothing else tells you.
 
-**Or the brand has no file in `brands/` at all.** Your project holds one brand, so any
-other brand's absence is expected, not evidence: treat an unrecognised name as pending
-and say the line below. Never guess that a name is a typo for the brand you do have.
+**Or the brand has no file in `brands/` at all.** Treat an unrecognised name as pending
+and say the line below. Never guess that a name is a typo for a brand you do have.
 
 Say exactly this, then stop:
 
@@ -334,19 +406,10 @@ Then nothing else. Specifically:
 because other tooling reads the same file. The values being present is not permission:
 the banner is. Read the header before you read the tokens, every time.
 
-### A third case: available for pages, blocked for email
+### Not a block for pages: `THIS BRAND IS NOT READY FOR EMAIL`
 
-A brand can be available and still not be ready for **email**. Its `tokens.css` carries
-`THIS BRAND IS NOT READY FOR EMAIL:` followed by the reason, under its EMAIL PALETTE.
-
-That brand builds landing pages normally. For an email, say:
-
-> {Brand} is not set up for email yet. The reason is a colour contrast problem in the
-> email frame, and it needs a fix on our side first. Landing pages for {Brand} are fine.
-> If the email is urgent, please ask your Ops Person.
-
-Then stop on the email. Do not pick a different colour to work around it, and do not
-build the email with a warning attached. Othership is in this state today.
+A `tokens.css` can carry that line under its EMAIL PALETTE. It matters only to
+`/email-speedrun`. The brand builds landing pages normally.
 
 **Check the brand before you ask anything else.** It is the first of the four things you
 need, and there is no point collecting a copy document for a brand you cannot build.
@@ -372,10 +435,12 @@ Build exactly what the marketer asked for. Nothing more.
 - **Explicit colour on everything.** Never rely on inheritance through `<blockquote>`,
   `<a>`, or other theme-styled elements. See `shared/shell-rules.md`.
 
-## Before finishing: ask about the page URL
+## The page URL
 
-Before delivering, ask the marketer where this page will live. This determines
-the URL slug Marketing Operations needs when creating the page.
+Marketing Operations needs the page's path to create it. If the brief names it, use it
+and do not ask. Otherwise ask once, at the end of your first-build message, so the answer
+comes back with the marketer's first round of changes instead of costing a round of its
+own after they say done:
 
 > **Where will this page live on the website?** Pick the closest match, or tell
 > me the exact path your team decided on.
@@ -394,8 +459,12 @@ the URL slug Marketing Operations needs when creating the page.
 > If you are not sure, pick **E**. Marketing Operations will decide the
 > right path.
 
-Include the URL in the manifest. If the marketer picked E, write "URL TBD , 
-confirm with Marketing Operations before creating the page."
+No answer by the time they say done: that is **E**. Say so in one line with the zip, and
+do not ask a second time. On the fast lane, do not ask at all: the URL is one of its open
+items.
+
+Include the URL in the manifest. For E, write "URL TBD, confirm with Marketing
+Operations before creating the page."
 
 ## Where to save
 
@@ -450,6 +519,14 @@ filenames, real field names, real paths.
 ## Page URL
 `{url-path}` (or: URL TBD, confirm with Marketing Operations before creating the page)
 
+## Still open
+The marketer did not settle these, so the package carries a default. Confirm each with
+the marketer before install.
+| Item | Default in this package |
+|---|---|
+| Form fields | wireframe row "Fields to confirm" |
+| Page URL | TBD |
+
 ## Files in this package
 | File | What Marketing Operations does with it |
 |---|---|
@@ -475,6 +552,12 @@ See `assets/PLACEHOLDERS.md`. Each appears in the page as a dashed box with its 
 | Form intent | `demo` / `contact` / NOT SET, with the reason |
 | Fields | {the list the marketer gave, with required yes/no} |
 
+## Form intent, NOT SET
+The form collects {what it is, e.g. event registrations}, which is neither `demo` nor
+`contact` (or: the marketer did not say what it is for). `data-zt-form` is left off on
+purpose: a value outside the intent registry resolves to nothing. Leave it unset on the
+HubSpot form too, so the two agree.
+
 ## Booking calendar
 | | |
 |---|---|
@@ -498,6 +581,9 @@ Or: "none set", and the reason (the form is a newsletter signup, so neither regi
 - [ ] Build the scheduler widget, if the page has one
 - [ ] Run `paste-scan.py --brand {brand}` on the body
 - [ ] Preview on staging against the brief, then promote to production
+
+## Notes for Ops
+{Every contradiction you found between the plugin's files, and how you resolved it.}
 ```
 
 ## Deliver
@@ -537,6 +623,9 @@ After the first build, and after every change:
 > layout match? Anything that looks AI-generated?
 >
 > Tell me what to change and I fix it. When it is right, say **done** and I make the zip.
+
+After the first build only, add the page URL question if it is still open (see "The page
+URL"), or on the fast lane, the open-items list (see "Fast lane").
 
 After the zip:
 
@@ -587,7 +676,9 @@ Do not build an email from this skill.
 - **Never use inline styles.**
 - **Never define `:root { }`.**
 - **Never write HTML comments** except `[PLACEHOLDER:]` markers.
-- **Never name individuals.** Roles only.
+- **Never name individuals in your own words.** In your messages and the manifest, say
+  Marketing Operations, never a person. A name in the marketer's copy, such as a
+  webinar speaker, stays as written.
 - **Never downgrade a feature because the marketer is unsure.**
 
 ## One rule above all

@@ -1,5 +1,8 @@
 # Brief: [Page Name]
 
+[Fill in what you have. A complete brief gets built with no questions. Only the brand
+and the copy? Type `/page-speedrun fast` and settle the rest after the first build.]
+
 ## Brand
 
 [Which brand is this page for? e.g. WorkAware, DeskFlex, Othership, Jadian]
@@ -28,8 +31,8 @@ below. Copy this block for as many sections as you need.]
 **Buttons:** [Label and action for any buttons, e.g. "Book a Demo, links to
 meetings page"]
 
-**Image or visual:** [Describe what goes here. If Tom will provide it later,
-say so. If you want the agent to use a placeholder, say what it should
+**Image or visual:** [Describe what goes here. If Marketing Operations will
+provide it later, say so. If you want a placeholder, say what it should
 represent, e.g. "Product screenshot showing the dashboard".]
 
 ---
@@ -37,14 +40,22 @@ represent, e.g. "Product screenshot showing the dashboard".]
 ## Images and assets
 
 [List every image, icon, or visual asset the page needs. For each one, note
-whether you have it ready or whether Tom will provide it later.]
+whether you have it ready or whether Marketing Operations will provide it later.]
 
 ## Form (if applicable)
 
-[If this page has a form: what fields should it collect? e.g. "Contact form , 
-name, email, company, message". Tom will configure the form in HubSpot.]
+[What the form is for: a demo request, a contact form, or something else
+(a registration, a download, a quote).]
+
+[What fields it should collect, e.g. "name, email, company, message".
+Marketing Operations will configure the form in HubSpot.]
 
 [If no form, delete this section.]
+
+## Page URL (if known)
+
+[Where the page will live, e.g. `/events/safety-webinar-2026`. Not decided yet?
+Delete this section; Marketing Operations will confirm it.]
 
 ## Notes
 

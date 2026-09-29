@@ -91,21 +91,22 @@ a { color: var(--{p}-accent-1); }
 .button--cw-5 { --fill: var(--{p}-cw-5, var(--{p}-accent-1)); --ink: var(--{p}-on-cw-5, var(--{p}-on-accent)); }
 .button--mode-outline { --mode-bg: transparent; --mode-fg: var(--fill); --mode-border: var(--fill); }
 
-/* slots the body marks for Marketing Operations, shown as labelled boxes */
-.zt-placeholder, .zt-hsform, .zt-scheduler {
+/* a slot the body left empty, shown as a labelled box. A slot that carries its own
+   label or wireframe (the usual case) renders as the body drew it. */
+.zt-placeholder:empty, .zt-hsform:empty, .zt-scheduler:empty {
   position: relative; min-height: 160px;
   border: 2px dashed var(--{p}-ink-muted);
   background: var(--{p}-bg-muted);
 }
-.zt-placeholder::after, .zt-hsform::after, .zt-scheduler::after {
+.zt-placeholder:empty::after, .zt-hsform:empty::after, .zt-scheduler:empty::after {
   content: attr(data-placeholder);
   position: absolute; inset: 0;
   display: flex; align-items: center; justify-content: center;
   font-family: var(--{p}-font-body); font-size: 14px;
   color: var(--{p}-ink-muted); text-transform: uppercase; letter-spacing: 0.08em;
 }
-.zt-hsform::after { content: "form goes here"; }
-.zt-scheduler::after { content: "booking calendar goes here"; }
+.zt-hsform:empty::after { content: "form goes here"; }
+.zt-scheduler:empty::after { content: "booking calendar goes here"; }
 </style>
 </head>
 <body>
