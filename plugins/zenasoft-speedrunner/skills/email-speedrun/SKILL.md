@@ -271,7 +271,7 @@ That brand builds landing pages normally. For an email, say:
 > If the email is urgent, please ask your Ops Person.
 
 Then stop on the email. Do not pick a different colour to work around it, and do not
-build the email with a warning attached. Othership is in this state today.
+build the email with a warning attached. The brand's `tokens.css` is the only record of which brands are blocked.
 
 **Check the brand before you ask anything else.** It is the first of the four things you
 need, and there is no point collecting a copy document for a brand you cannot build.
