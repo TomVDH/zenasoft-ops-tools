@@ -11,7 +11,8 @@ For layouts not listed here, build from the brand's tokens and the container bel
 ## Placeholders
 
 Every image, screenshot, or visual Marketing Operations will wire in later gets a placeholder.
-The body never contains real images, only labelled slots.
+The body never contains invented, fetched or stock images. A file the marketer supplied goes
+in as an `<img>` from `assets/` (see the skill); everything else is a labelled slot.
 
 ```css
 .zt-placeholder {
