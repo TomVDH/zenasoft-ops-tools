@@ -28,8 +28,11 @@ Then restart Claude Code.
 - **No `/speedrun-help`**: Claude Code was not restarted after install.
 - Still stuck: do not reinstall over the top. Ask Tom.
 
-## The zip
+## The zips
 
-`__ZENA CLAUDE PLUGINS` on the shared OneDrive library carries releases only: `zenasoft-speedrunner-v<version>.zip`,
-older ones in `_previous/`. For a machine that cannot reach GitHub: unzip it anywhere, then use the unzipped
-`zena-claude-plugins` folder as the path in the first command, in double quotes.
+`__ZENA CLAUDE PLUGINS` on the shared OneDrive library carries releases only, two zips per version,
+older ones in `_previous/`.
+
+- **`zenasoft-speedrunner-v<version>.zip`**: for Cowork. Plugins → upload this zip as it is. Do not unzip it.
+- **`zena-claude-plugins-v<version>.zip`**: for a terminal that cannot reach GitHub. Unzip it anywhere, then use
+  the unzipped `zena-claude-plugins` folder as the path in the first install command, in double quotes.
